@@ -4,7 +4,6 @@
     <arg name="map_path" default=""/>
     <arg name="load_map" default="false"/>
     <arg name="save_map" default="false"/>
-    <arg name="save_load_assembled_map" default="false"/>
 
     <arg name="needs_localization" default="true"/>
 
@@ -42,7 +41,6 @@
         <param name="map_path" value="$(arg map_path)"/>
         <param name="load_map" value="$(arg load_map)"/>
         <param name="save_map" value="$(arg save_map)"/>
-        <param name="save_load_assembled_map" value="$(arg save_load_assembled_map)"/>
 
         <param name="needs_localization" value="$(arg needs_localization)"/>
 
