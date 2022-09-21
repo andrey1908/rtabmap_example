@@ -6,6 +6,7 @@
     <arg name="save_map" default="false"/>
 
     <arg name="needs_localization" default="true"/>
+    <arg name="cache_loaded_map" default="true"/>
 
     <arg name="min_semantic_range" default="0"/>
     <arg name="max_semantic_range" default="0"/>
@@ -43,6 +44,7 @@
         <param name="save_map" value="$(arg save_map)"/>
 
         <param name="needs_localization" value="$(arg needs_localization)"/>
+        <param name="cache_loaded_map" value="$(arg cache_loaded_map)"/>
 
         <param name="min_semantic_range" value="$(arg min_semantic_range)"/>
         <param name="max_semantic_range" value="$(arg max_semantic_range)"/>
