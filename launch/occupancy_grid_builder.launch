@@ -8,9 +8,6 @@
     <arg name="needs_localization" default="true"/>
     <arg name="cache_loaded_map" default="true"/>
 
-    <arg name="min_semantic_range" default="0"/>
-    <arg name="max_semantic_range" default="0"/>
-
     <!-- Occupanyc grid builder -->
     <node pkg="rtabmap_ros" type="occupancy_grid_builder" name="occupancy_grid_builder" output="screen" args="">
         <!-- Топик, куда будет публиковаться карта -->
@@ -46,9 +43,6 @@
         <param name="needs_localization" value="$(arg needs_localization)"/>
         <param name="cache_loaded_map" value="$(arg cache_loaded_map)"/>
 
-        <param name="min_semantic_range" value="$(arg min_semantic_range)"/>
-        <param name="max_semantic_range" value="$(arg max_semantic_range)"/>
-
         <!-- Параметры -->
         <param name="Grid/CellSize" value="0.10"/>
         <param name="Grid/RayTracing" value="true"/>
@@ -58,6 +52,9 @@
         <param name="Grid/MaxObstacleHeight" value="1.5"/>
         <param name="Grid/MaxGroundHeight" value="0.1"/>
         <param name="Grid/3D" value="false"/>
+
+        <param name="Grid/MinSemanticRange" value="0"/>
+        <param name="Grid/MaxSemanticRange" value="0"/>
 
         <param name="Grid/ScanDecimation" value="3"/>
         <param name="Grid/NormalsSegmentation" value="false"/>
