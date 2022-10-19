@@ -56,6 +56,9 @@
         <param name="Grid/MinSemanticRange" value="0"/>
         <param name="Grid/MaxSemanticRange" value="0"/>
 
+        <param name="Grid/TemporarilyOccupiedCellsColor" value="9831741"/>
+        <param name="Grid/ShowTemporarilyOccupiedCells" value="true"/>
+
         <param name="Grid/ScanDecimation" value="3"/>
         <param name="Grid/NormalsSegmentation" value="false"/>
     </node>
