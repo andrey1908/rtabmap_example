@@ -48,10 +48,9 @@
         <param name="Grid/RayTracing" value="true"/>
         <param name="Grid/FromDepth" value="false"/>
         <param name="Grid/RangeMin" value="0"/>
-        <param name="Grid/RangeMax" value="0"/>
+        <param name="Grid/RangeMax" value="10"/>
         <param name="Grid/MaxObstacleHeight" value="1.5"/>
-        <param name="Grid/MaxGroundHeight" value="0.1"/>
-        <param name="Grid/3D" value="false"/>
+        <param name="Grid/MaxGroundHeight" value="0.2"/>
 
         <param name="Grid/MinSemanticRange" value="0"/>
         <param name="Grid/MaxSemanticRange" value="0"/>
