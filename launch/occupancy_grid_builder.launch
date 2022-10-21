@@ -8,6 +8,8 @@
     <arg name="needs_localization" default="true"/>
     <arg name="cache_loaded_map" default="true"/>
 
+    <arg name="temporary_mapping" default="false"/>
+
     <!-- Occupanyc grid builder -->
     <node pkg="rtabmap_ros" type="occupancy_grid_builder" name="occupancy_grid_builder" output="screen" args="">
         <!-- Топик, куда будет публиковаться карта -->
@@ -40,8 +42,10 @@
         <param name="load_map" value="$(arg load_map)"/>
         <param name="save_map" value="$(arg save_map)"/>
 
+        <!-- Другие параметры -->
         <param name="needs_localization" value="$(arg needs_localization)"/>
         <param name="cache_loaded_map" value="$(arg cache_loaded_map)"/>
+        <param name="temporary_mapping" value="$(arg temporary_mapping)"/>
 
         <!-- Параметры -->
         <param name="Grid/CellSize" value="0.10"/>
@@ -57,6 +61,8 @@
 
         <param name="Grid/TemporarilyOccupiedCellsColor" value="9831741"/>
         <param name="Grid/ShowTemporarilyOccupiedCells" value="true"/>
+
+        <param name="Grid/MaxTemporaryLocalMaps" value="1"/>
 
         <param name="Grid/ScanDecimation" value="3"/>
         <param name="Grid/NormalsSegmentation" value="false"/>
