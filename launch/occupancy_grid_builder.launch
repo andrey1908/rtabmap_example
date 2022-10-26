@@ -12,23 +12,23 @@
 
     <!-- Occupanyc grid builder -->
     <node pkg="rtabmap_ros" type="occupancy_grid_builder" name="occupancy_grid_builder" output="screen" args="">
-        <!-- Топик, куда будет публиковаться карта -->
+        <!-- Occupancy grid topic -->
         <remap from="grid_map" to="/grid_map"/>
 
-        <!-- remap топиков для чтения данных -->
+        <!-- Topics to read data -->
         <remap from="odom" to="/husky_velocity_controller/odom"/>
-        <remap from="optimized_poses" to="/optimized_poses"/>
+        <remap from="optimization_results" to="/optimization_results"/>
         <remap from="scan_cloud" to="/velodyne_points"/>
         <remap from="rgb/image" to="/zed_node/left/image_rect_color"/>
         <remap from="rgb/camera_info" to="/zed_node/left/camera_info"/>
         <param name="rgb/image_transport" type="string" value="compressed"/>
         <remap from="depth/image" to="/zed_node/depth/depth_registered"/>
 
-        <!-- Параметры синхронизации сообщений -->
+        <!-- Messages synchronization -->
         <param name="approx_sync" value="true"/>
         <param name="queue_size" value="10"/>
 
-        <!-- Данные, на которые подписываться -->
+        <!-- Data to read -->
         <param name="subscribe_odom" value="true"/>
         <param name="subscribe_rgb" value="false"/>
         <param name="subscribe_stereo" value="false"/>
@@ -37,17 +37,17 @@
         <param name="subscribe_scan" value="false"/>
         <param name="subscribe_scan_cloud" value="true"/>
 
-        <!-- Загрузка / сохранение карты -->
+        <!-- Save / load the map -->
         <param name="map_path" value="$(arg map_path)"/>
         <param name="load_map" value="$(arg load_map)"/>
         <param name="save_map" value="$(arg save_map)"/>
 
-        <!-- Другие параметры -->
+        <!-- Other -->
         <param name="cache_loaded_map" value="$(arg cache_loaded_map)"/>
         <param name="needs_localization" value="$(arg needs_localization)"/>
         <param name="temporary_mapping" value="$(arg temporary_mapping)"/>
 
-        <!-- Параметры -->
+        <!-- Parameters -->
         <param name="Grid/CellSize" value="0.10"/>
         <param name="Grid/RayTracing" value="true"/>
         <param name="Grid/FromDepth" value="false"/>
