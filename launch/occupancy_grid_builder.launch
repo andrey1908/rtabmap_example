@@ -66,6 +66,10 @@
         <param name="Grid/ShowTemporarilyOccupiedCells" value="true"/>
 
         <param name="Grid/MaxTemporaryLocalMaps" value="1"/>
+
+        <param name="GridGlobal/TemporaryOccupancyThr" value="0.6"/>
+        <param name="GridGlobal/TemporaryProbMiss" value="0.4"/>
+        <param name="GridGlobal/TemporaryProbHit" value="0.7"/>
     </node>
 
 </launch>
