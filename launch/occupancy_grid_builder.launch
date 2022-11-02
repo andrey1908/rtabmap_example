@@ -8,34 +8,49 @@
     <arg name="cache_loaded_map" default="true"/>
     <arg name="needs_localization" default="true"/>
 
+    <arg name="accumulative_mapping" default="true"/>
     <arg name="temporary_mapping" default="false"/>
 
     <!-- Occupanyc grid builder -->
     <node pkg="rtabmap_ros" type="occupancy_grid_builder" name="occupancy_grid_builder" output="screen" args="">
         <!-- Occupancy grid topic -->
         <remap from="grid_map" to="/grid_map"/>
+        <remap from="colored_grid_map" to="/colored_grid_map"/>
 
         <!-- Topics to read data -->
         <remap from="odom" to="/husky_velocity_controller/odom"/>
-        <remap from="optimization_results" to="/optimization_results"/>
         <remap from="scan_cloud" to="/velodyne_points"/>
         <remap from="rgb/image" to="/zed_node/left/image_rect_color"/>
         <remap from="rgb/camera_info" to="/zed_node/left/camera_info"/>
         <param name="rgb/image_transport" type="string" value="compressed"/>
-        <remap from="depth/image" to="/zed_node/depth/depth_registered"/>
-
-        <!-- Messages synchronization -->
-        <param name="approx_sync" value="true"/>
-        <param name="queue_size" value="10"/>
+        <remap from="rgb_1/image" to="/rgb_1/image"/>
+        <remap from="rgb_1/camera_info" to="/rgb_1/camera_info"/>
+        <param name="rgb_1/image_transport" type="string" value="raw"/>
+        <remap from="rgb_2/image" to="/rgb_2/image"/>
+        <remap from="rgb_2/camera_info" to="/rgb_2/camera_info"/>
+        <param name="rgb_2/image_transport" type="string" value="raw"/>
+        <remap from="optimization_results" to="/optimization_results"/>
 
         <!-- Data to read -->
+        <param name="subscribe_approx_sync" value="true"/>
+        <param name="subscribe_queue_size" value="10"/>
         <param name="subscribe_odom" value="true"/>
-        <param name="subscribe_rgb" value="false"/>
-        <param name="subscribe_stereo" value="false"/>
-        <param name="subscribe_depth" value="false"/>
-        <param name="subscribe_rgbd" value="false"/>
         <param name="subscribe_scan" value="false"/>
         <param name="subscribe_scan_cloud" value="true"/>
+        <param name="subscribe_rgb" value="false"/>
+        <param name="subscribe_rgb_cameras" value="1"/>
+        <param name="subscribe_depth" value="false"/>
+        <param name="subscribe_stereo" value="false"/>
+
+        <param name="temporary_subscribe_approx_sync" value="true"/>
+        <param name="temporary_subscribe_queue_size" value="10"/>
+        <param name="temporary_subscribe_odom" value="false"/>
+        <param name="temporary_subscribe_scan" value="false"/>
+        <param name="temporary_subscribe_scan_cloud" value="false"/>
+        <param name="temporary_subscribe_rgb" value="false"/>
+        <param name="temporary_subscribe_rgb_cameras" value="1"/>
+        <param name="temporary_subscribe_depth" value="false"/>
+        <param name="temporary_subscribe_stereo" value="false"/>
 
         <!-- Save / load the map -->
         <param name="map_path" value="$(arg map_path)"/>
@@ -45,6 +60,7 @@
         <!-- Other -->
         <param name="cache_loaded_map" value="$(arg cache_loaded_map)"/>
         <param name="needs_localization" value="$(arg needs_localization)"/>
+        <param name="accumulative_mapping" value="$(arg accumulative_mapping)"/>
         <param name="temporary_mapping" value="$(arg temporary_mapping)"/>
 
         <!-- Parameters -->
@@ -62,11 +78,10 @@
         <param name="Grid/MinSemanticRange" value="0"/>
         <param name="Grid/MaxSemanticRange" value="0"/>
 
-        <param name="Grid/TemporarilyOccupiedCellsColor" value="-1"/>
+        <param name="Grid/TemporarilyOccupiedCellColor" value="-1"/>
         <param name="Grid/ShowTemporarilyOccupiedCells" value="true"/>
 
         <param name="Grid/MaxTemporaryLocalMaps" value="1"/>
-
         <param name="GridGlobal/TemporaryOccupancyThr" value="0.6"/>
         <param name="GridGlobal/TemporaryProbMiss" value="0.4"/>
         <param name="GridGlobal/TemporaryProbHit" value="0.7"/>
