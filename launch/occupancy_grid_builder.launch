@@ -1,56 +1,59 @@
 <launch>
 
-    <!-- Arguments -->
+    <!-- Save / load the map -->
     <arg name="map_path" default=""/>
     <arg name="load_map" default="false"/>
     <arg name="save_map" default="false"/>
 
+    <!-- Other -->
     <arg name="cache_loaded_map" default="true"/>
     <arg name="needs_localization" default="true"/>
 
+    <!-- Mapping mode -->
     <arg name="accumulative_mapping" default="true"/>
     <arg name="temporary_mapping" default="false"/>
 
+    <!-- Data to read -->
+    <arg name="subscribe_approx_sync" default="true"/>
+    <arg name="subscribe_queue_size" default="10"/>
+    <arg name="subscribe_odom" default="true"/>
+    <arg name="subscribe_scan" default="false"/>
+    <arg name="subscribe_scan_cloud" default="true"/>
+    <arg name="subscribe_rgb" default="false"/>
+    <arg name="subscribe_rgb_cameras" default="1"/>
+    <arg name="subscribe_depth" default="false"/>
+    <arg name="subscribe_stereo" default="false"/>
+
+    <arg name="temporary_subscribe_approx_sync" default="true"/>
+    <arg name="temporary_subscribe_queue_size" default="10"/>
+    <arg name="temporary_subscribe_odom" default="true"/>
+    <arg name="temporary_subscribe_scan" default="false"/>
+    <arg name="temporary_subscribe_scan_cloud" default="true"/>
+    <arg name="temporary_subscribe_rgb" default="false"/>
+    <arg name="temporary_subscribe_rgb_cameras" default="1"/>
+    <arg name="temporary_subscribe_depth" default="false"/>
+    <arg name="temporary_subscribe_stereo" default="false"/>
+
+    <!-- Topics to read data -->
+    <arg name="odom" default="/odom"/>
+    <arg name="scan_cloud" default="/scan_cloud"/>
+    <arg name="rgb/image" default="/rgb/image"/>
+    <arg name="rgb/camera_info" default="/rgb/camera_info"/>
+    <arg name="rgb/image_transport" default="raw"/>
+    <arg name="rgb_1/image" default="/rgb_1/image"/>
+    <arg name="rgb_1/camera_info" default="/rgb_1/camera_info"/>
+    <arg name="rgb_1/image_transport" default="raw"/>
+    <arg name="rgb_2/image" default="/rgb_2/image"/>
+    <arg name="rgb_2/camera_info" default="/rgb_2/camera_info"/>
+    <arg name="rgb_2/image_transport" default="raw"/>
+    <arg name="optimization_results" default="/optimization_results"/>
+
+    <!-- Output topics -->
+    <arg name="grid_map" default="/grid_map"/>
+    <arg name="colored_grid_map" default="/colored_grid_map"/>
+
     <!-- Occupanyc grid builder -->
     <node pkg="rtabmap_ros" type="occupancy_grid_builder" name="occupancy_grid_builder" output="screen" args="">
-        <!-- Occupancy grid topic -->
-        <remap from="grid_map" to="/grid_map"/>
-        <remap from="colored_grid_map" to="/colored_grid_map"/>
-
-        <!-- Topics to read data -->
-        <remap from="odom" to="/husky_velocity_controller/odom"/>
-        <remap from="scan_cloud" to="/velodyne_points"/>
-        <remap from="rgb/image" to="/zed_node/left/image_rect_color"/>
-        <remap from="rgb/camera_info" to="/zed_node/left/camera_info"/>
-        <param name="rgb/image_transport" type="string" value="compressed"/>
-        <remap from="rgb_1/image" to="/rgb_1/image"/>
-        <remap from="rgb_1/camera_info" to="/rgb_1/camera_info"/>
-        <param name="rgb_1/image_transport" type="string" value="raw"/>
-        <remap from="rgb_2/image" to="/rgb_2/image"/>
-        <remap from="rgb_2/camera_info" to="/rgb_2/camera_info"/>
-        <param name="rgb_2/image_transport" type="string" value="raw"/>
-        <remap from="optimization_results" to="/optimization_results"/>
-
-        <!-- Data to read -->
-        <param name="subscribe_approx_sync" value="true"/>
-        <param name="subscribe_queue_size" value="10"/>
-        <param name="subscribe_odom" value="true"/>
-        <param name="subscribe_scan" value="false"/>
-        <param name="subscribe_scan_cloud" value="true"/>
-        <param name="subscribe_rgb" value="false"/>
-        <param name="subscribe_rgb_cameras" value="1"/>
-        <param name="subscribe_depth" value="false"/>
-        <param name="subscribe_stereo" value="false"/>
-
-        <param name="temporary_subscribe_approx_sync" value="true"/>
-        <param name="temporary_subscribe_queue_size" value="10"/>
-        <param name="temporary_subscribe_odom" value="false"/>
-        <param name="temporary_subscribe_scan" value="false"/>
-        <param name="temporary_subscribe_scan_cloud" value="false"/>
-        <param name="temporary_subscribe_rgb" value="false"/>
-        <param name="temporary_subscribe_rgb_cameras" value="1"/>
-        <param name="temporary_subscribe_depth" value="false"/>
-        <param name="temporary_subscribe_stereo" value="false"/>
 
         <!-- Save / load the map -->
         <param name="map_path" value="$(arg map_path)"/>
@@ -60,8 +63,49 @@
         <!-- Other -->
         <param name="cache_loaded_map" value="$(arg cache_loaded_map)"/>
         <param name="needs_localization" value="$(arg needs_localization)"/>
+
+        <!-- Mapping mode -->
         <param name="accumulative_mapping" value="$(arg accumulative_mapping)"/>
         <param name="temporary_mapping" value="$(arg temporary_mapping)"/>
+
+        <!-- Data to read -->
+        <param name="subscribe_approx_sync" value="$(arg subscribe_approx_sync)"/>
+        <param name="subscribe_queue_size" value="$(arg subscribe_queue_size)"/>
+        <param name="subscribe_odom" value="$(arg subscribe_odom)"/>
+        <param name="subscribe_scan" value="$(arg subscribe_scan)"/>
+        <param name="subscribe_scan_cloud" value="$(arg subscribe_scan_cloud)"/>
+        <param name="subscribe_rgb" value="$(arg subscribe_rgb)"/>
+        <param name="subscribe_rgb_cameras" value="$(arg subscribe_rgb_cameras)"/>
+        <param name="subscribe_depth" value="$(arg subscribe_depth)"/>
+        <param name="subscribe_stereo" value="$(arg subscribe_stereo)"/>
+
+        <param name="temporary_subscribe_approx_sync" value="$(arg temporary_subscribe_approx_sync)"/>
+        <param name="temporary_subscribe_queue_size" value="$(arg temporary_subscribe_queue_size)"/>
+        <param name="temporary_subscribe_odom" value="$(arg temporary_subscribe_odom)"/>
+        <param name="temporary_subscribe_scan" value="$(arg temporary_subscribe_scan)"/>
+        <param name="temporary_subscribe_scan_cloud" value="$(arg temporary_subscribe_scan_cloud)"/>
+        <param name="temporary_subscribe_rgb" value="$(arg temporary_subscribe_rgb)"/>
+        <param name="temporary_subscribe_rgb_cameras" value="$(arg temporary_subscribe_rgb_cameras)"/>
+        <param name="temporary_subscribe_depth" value="$(arg temporary_subscribe_depth)"/>
+        <param name="temporary_subscribe_stereo" value="$(arg temporary_subscribe_stereo)"/>
+
+        <!-- Topics to read data -->
+        <remap from="odom" to="$(arg odom)"/>
+        <remap from="scan_cloud" to="$(arg scan_cloud)"/>
+        <remap from="rgb/image" to="$(arg rgb/image)"/>
+        <remap from="rgb/camera_info" to="$(arg rgb/camera_info)"/>
+        <param name="rgb/image_transport" value="$(arg rgb/image_transport)"/>
+        <remap from="rgb_1/image" to="$(arg rgb_1/image)"/>
+        <remap from="rgb_1/camera_info" to="$(arg rgb_1/camera_info)"/>
+        <param name="rgb_1/image_transport" value="$(arg rgb_1/image_transport)"/>
+        <remap from="rgb_2/image" to="$(arg rgb_2/image)"/>
+        <remap from="rgb_2/camera_info" to="$(arg rgb_2/camera_info)"/>
+        <param name="rgb_2/image_transport" value="$(arg rgb_2/image_transport)"/>
+        <remap from="optimization_results" to="$(arg optimization_results)"/>
+
+        <!-- Output topics -->
+        <remap from="grid_map" to="$(arg grid_map)"/>
+        <remap from="colored_grid_map" to="$(arg colored_grid_map)"/>
 
         <!-- Parameters -->
         <param name="Grid/CellSize" value="0.10"/>
