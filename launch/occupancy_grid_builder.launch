@@ -1,9 +1,8 @@
 <launch>
 
-    <!-- Save / load the map -->
-    <arg name="map_path" default=""/>
-    <arg name="load_map" default="false"/>
-    <arg name="save_map" default="false"/>
+    <!-- Save / load map -->
+    <arg name="load_map_path" default=""/>
+    <arg name="save_map_path" default=""/>
 
     <!-- Other -->
     <arg name="cache_map" default="true"/>
@@ -55,10 +54,9 @@
     <!-- Occupanyc grid builder -->
     <node pkg="rtabmap_ros" type="occupancy_grid_builder" name="occupancy_grid_builder" output="screen" args="">
 
-        <!-- Save / load the map -->
-        <param name="map_path" value="$(arg map_path)"/>
-        <param name="load_map" value="$(arg load_map)"/>
-        <param name="save_map" value="$(arg save_map)"/>
+        <!-- Save / load map -->
+        <param name="load_map_path" value="$(arg load_map_path)"/>
+        <param name="save_map_path" value="$(arg save_map_path)"/>
 
         <!-- Other -->
         <param name="cache_map" value="$(arg cache_map)"/>
