@@ -6,7 +6,7 @@
     <arg name="save_map" default="false"/>
 
     <!-- Other -->
-    <arg name="cache_loaded_map" default="true"/>
+    <arg name="cache_map" default="true"/>
     <arg name="needs_localization" default="true"/>
 
     <!-- Mapping mode -->
@@ -61,7 +61,7 @@
         <param name="save_map" value="$(arg save_map)"/>
 
         <!-- Other -->
-        <param name="cache_loaded_map" value="$(arg cache_loaded_map)"/>
+        <param name="cache_map" value="$(arg cache_map)"/>
         <param name="needs_localization" value="$(arg needs_localization)"/>
 
         <!-- Mapping mode -->
