@@ -1,5 +1,8 @@
 <launch>
 
+    <!-- Frames -->
+    <arg name="map_frame" default="local_map_lidar"/>
+
     <!-- Save / load map -->
     <arg name="load_map_path" default=""/>
     <arg name="save_map_path" default=""/>
@@ -53,6 +56,8 @@
 
     <!-- Occupanyc grid builder -->
     <node pkg="rtabmap_ros" type="occupancy_grid_builder" name="occupancy_grid_builder" output="screen" args="">
+        <!-- Frames -->
+        <param name="map_frame" value="$(arg map_frame)"/>
 
         <!-- Save / load map -->
         <param name="load_map_path" value="$(arg load_map_path)"/>
