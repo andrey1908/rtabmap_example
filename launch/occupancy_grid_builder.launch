@@ -34,8 +34,8 @@
     <arg name="temporary_subscribe_stereo" default="false"/>
 
     <!-- Topics to read data -->
-    <arg name="odom" default="/odom"/>
-    <arg name="scan_cloud" default="/scan_cloud"/>
+    <arg name="odom" default="/cartographer/tracked_local_odometry"/>
+    <arg name="scan_cloud" default="/velodyne_points"/>
     <arg name="rgb/image" default="/rgb/image"/>
     <arg name="rgb/camera_info" default="/rgb/camera_info"/>
     <arg name="rgb/image_transport" default="raw"/>
@@ -45,7 +45,7 @@
     <arg name="rgb_2/image" default="/rgb_2/image"/>
     <arg name="rgb_2/camera_info" default="/rgb_2/camera_info"/>
     <arg name="rgb_2/image_transport" default="raw"/>
-    <arg name="optimization_results" default="/optimization_results"/>
+    <arg name="optimization_results" default="/cartographer/optimization_results"/>
 
     <!-- Output topics -->
     <arg name="grid_map" default="/grid_map"/>
