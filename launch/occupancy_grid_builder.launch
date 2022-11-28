@@ -10,6 +10,7 @@
     <!-- Other -->
     <arg name="cache_map" default="true"/>
     <arg name="needs_localization" default="true"/>
+    <arg name="max_interpolation_time_error" default="0.06"/>
 
     <!-- Mapping mode -->
     <arg name="accumulative_mapping" default="true"/>
@@ -55,7 +56,7 @@
     <arg name="colored_grid_map" default="/colored_grid_map"/>
 
     <!-- Occupanyc grid builder -->
-    <node pkg="rtabmap_ros" type="occupancy_grid_builder" name="occupancy_grid_builder" output="screen" args="">
+    <node pkg="rtabmap_ros" type="occupancy_grid_builder" name="occupancy_grid_builder" output="screen" args="--uinfo">
         <!-- Frames -->
         <param name="map_frame" value="$(arg map_frame)"/>
 
@@ -66,6 +67,7 @@
         <!-- Other -->
         <param name="cache_map" value="$(arg cache_map)"/>
         <param name="needs_localization" value="$(arg needs_localization)"/>
+        <param name="max_interpolation_time_error" value="$(arg max_interpolation_time_error)"/>
 
         <!-- Mapping mode -->
         <param name="accumulative_mapping" value="$(arg accumulative_mapping)"/>
