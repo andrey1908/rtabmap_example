@@ -124,6 +124,7 @@
         <param name="Grid/MaxGroundHeight" value="0.2"/>
         <param name="Grid/ScanDecimation" value="3"/>
         <param name="Grid/NormalsSegmentation" value="false"/>
+        <param name="Grid/SensorBlindRange2d" value="0.65"/>
 
         <param name="Grid/SemanticDilation" value="0"/>
         <param name="Grid/MinSemanticRange" value="0"/>
