@@ -17,6 +17,12 @@
     <arg name="accumulative_mapping" default="true"/>
     <arg name="temporary_mapping" default="false"/>
 
+    <!-- Door tracking -->
+    <arg name="door_tracking_small_radius" default="0.3"/>
+    <arg name="door_tracking_large_radius" default="0.7"/>
+    <arg name="draw_door_center_estimation" default="false"/>
+    <arg name="draw_door_corners" default="false"/>
+
     <!-- Data to read -->
     <arg name="subscribe_approx_sync" default="true"/>
     <arg name="subscribe_queue_size" default="10"/>
@@ -74,6 +80,12 @@
         <!-- Mapping mode -->
         <param name="accumulative_mapping" value="$(arg accumulative_mapping)"/>
         <param name="temporary_mapping" value="$(arg temporary_mapping)"/>
+
+        <!-- Door tracking -->
+        <param name="door_tracking_small_radius" value="$(arg door_tracking_small_radius)"/>
+        <param name="door_tracking_large_radius" value="$(arg door_tracking_large_radius)"/>
+        <param name="draw_door_center_estimation" value="$(arg draw_door_center_estimation)"/>
+        <param name="draw_door_corners" value="$(arg draw_door_corners)"/>
 
         <!-- Data to read -->
         <param name="subscribe_approx_sync" value="$(arg subscribe_approx_sync)"/>
