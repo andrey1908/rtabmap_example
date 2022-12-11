@@ -10,12 +10,12 @@
     <!-- Other -->
     <arg name="cache_map" default="true"/>
     <arg name="needs_localization" default="true"/>
-    <arg name="max_interpolation_time_error" default="0.06"/>
+    <arg name="max_interpolation_time_error" default="0.3"/>
     <arg name="update_max_extrapolation_time" default="1"/>
 
     <!-- Mapping mode -->
-    <arg name="accumulative_mapping" default="true"/>
-    <arg name="temporary_mapping" default="false"/>
+    <arg name="accumulative_mapping" default="false"/>
+    <arg name="temporary_mapping" default="true"/>
 
     <!-- Door tracking -->
     <arg name="door_tracking_small_radius" default="0.3"/>
@@ -26,7 +26,7 @@
     <!-- Data to read -->
     <arg name="subscribe_approx_sync" default="true"/>
     <arg name="subscribe_queue_size" default="10"/>
-    <arg name="subscribe_odom" default="true"/>
+    <arg name="subscribe_odom" default="false"/>
     <arg name="subscribe_scan" default="false"/>
     <arg name="subscribe_scan_cloud" default="true"/>
     <arg name="subscribe_rgb" default="false"/>
@@ -36,7 +36,7 @@
 
     <arg name="temporary_subscribe_approx_sync" default="true"/>
     <arg name="temporary_subscribe_queue_size" default="10"/>
-    <arg name="temporary_subscribe_odom" default="true"/>
+    <arg name="temporary_subscribe_odom" default="false"/>
     <arg name="temporary_subscribe_scan" default="false"/>
     <arg name="temporary_subscribe_scan_cloud" default="true"/>
     <arg name="temporary_subscribe_rgb" default="false"/>
@@ -138,17 +138,23 @@
         <param name="Grid/NormalsSegmentation" value="false"/>
         <param name="Grid/SensorBlindRange2d" value="0.65"/>
 
-        <param name="Grid/SemanticDilation" value="0"/>
+        <param name="Grid/SemanticDilation" value="20"/>
         <param name="Grid/MinSemanticRange" value="0"/>
         <param name="Grid/MaxSemanticRange" value="0"/>
 
-        <param name="Grid/TemporarilyOccupiedCellColor" value="-1"/>
+        <param name="Grid/TemporarilyOccupiedCellColor" value="9831741"/>  <!-- 9831741 -->
         <param name="Grid/ShowTemporarilyOccupiedCells" value="true"/>
 
         <param name="Grid/MaxTemporaryLocalMaps" value="1"/>
         <param name="GridGlobal/TemporaryOccupancyThr" value="0.6"/>
         <param name="GridGlobal/TemporaryProbMiss" value="0.4"/>
         <param name="GridGlobal/TemporaryProbHit" value="0.7"/>
+        
+        
+        <param name="Grid/MaxRange" value="10"/>
+        <param name="RayTracing/MaxVisibleRange" value="10"/>
+        <param name="RayTracing/MaxRayTracingRange" value="10"/>
+        <param name="RayTracing/TraceRaysIntoUnknownSpace" value="false"/>
     </node>
 
 </launch>
