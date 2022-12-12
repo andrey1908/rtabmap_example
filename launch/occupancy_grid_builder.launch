@@ -127,7 +127,6 @@
         <remap from="colored_grid_map" to="$(arg colored_grid_map)"/>
 
         <!-- Parameters -->
-        <param name="Grid/CellSize" value="0.10"/>
         <param name="Grid/RayTracing" value="true"/>
         <param name="Grid/FromDepth" value="false"/>
         <param name="Grid/RangeMin" value="0"/>
@@ -149,10 +148,13 @@
         <param name="GridGlobal/TemporaryOccupancyThr" value="0.6"/>
         <param name="GridGlobal/TemporaryProbMiss" value="0.4"/>
         <param name="GridGlobal/TemporaryProbHit" value="0.7"/>
-        
-        
-        <param name="Grid/MaxRange" value="10"/>
-        <param name="RayTracing/MaxVisibleRange" value="10"/>
+
+        <param name="Grid/CellSize" value="0.10"/>
+        <param name="LocalMap/MaxRange" value="100"/>
+        <param name="LocalMap/MinObstacleHeight" value="0.0"/>
+        <param name="LocalMap/MaxObstacleHeight" value="1.5"/>
+        <param name="LocalMap/UseRayTracing" value="true"/>
+        <param name="RayTracing/MaxVisibleRange" value="100"/>
         <param name="RayTracing/MaxRayTracingRange" value="10"/>
         <param name="RayTracing/TraceRaysIntoUnknownSpace" value="false"/>
     </node>
