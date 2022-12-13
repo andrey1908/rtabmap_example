@@ -150,13 +150,15 @@
         <param name="GridGlobal/TemporaryProbHit" value="0.7"/>
 
         <param name="Grid/CellSize" value="0.10"/>
-        <param name="LocalMap/MaxRange" value="100"/>
+        <param name="LocalMap/MaxRange" value="10"/>
         <param name="LocalMap/MinObstacleHeight" value="0.0"/>
         <param name="LocalMap/MaxObstacleHeight" value="1.5"/>
+        <param name="LocalMap/MinSemanticRange" value="0.0"/>
+        <param name="LocalMap/MaxSemanticRange" value="0.0"/>
         <param name="LocalMap/UseRayTracing" value="true"/>
-        <param name="RayTracing/MaxVisibleRange" value="100"/>
+        <param name="RayTracing/MaxVisibleRange" value="10"/>
         <param name="RayTracing/MaxRayTracingRange" value="10"/>
-        <param name="RayTracing/TraceRaysIntoUnknownSpace" value="false"/>
+        <param name="RayTracing/TraceRaysIntoUnknownSpace" value="true"/>
     </node>
 
 </launch>
