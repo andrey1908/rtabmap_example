@@ -47,8 +47,8 @@
     <!-- Topics to read data -->
     <arg name="odom" default="/cartographer/tracked_local_odometry"/>
     <arg name="scan_cloud" default="/velodyne_points"/>
-    <arg name="rgb/image" default="/rgb/image"/>
-    <arg name="rgb/camera_info" default="/rgb/camera_info"/>
+    <arg name="rgb/image" default="/zed_segmentated"/>
+    <arg name="rgb/camera_info" default="/zed_node/left/camera_info"/>
     <arg name="rgb/image_transport" default="raw"/>
     <arg name="rgb_1/image" default="/rgb_1/image"/>
     <arg name="rgb_1/camera_info" default="/rgb_1/camera_info"/>
@@ -66,7 +66,7 @@
     <arg name="cell_size" default="0.10"/>
 
     <!-- Occupanyc grid builder -->
-    <node pkg="rtabmap_ros" type="occupancy_grid_builder" name="occupancy_grid_builder" output="screen" args="--uinfo">
+    <node pkg="rtabmap_ros" type="occupancy_grid_map" name="occupancy_grid_map" output="screen" args="--uinfo">
         <!-- Frames -->
         <param name="map_frame" value="$(arg map_frame)"/>
 
@@ -131,27 +131,32 @@
 
         <!-- Parameters -->
         <param name="Grid/CellSize" value="$(arg cell_size)"/>
-        <param name="Grid/RayTracing" value="true"/>
-        <param name="Grid/FromDepth" value="false"/>
-        <param name="Grid/RangeMin" value="0"/>
-        <param name="Grid/RangeMax" value="10"/>
-        <param name="Grid/MaxObstacleHeight" value="1.5"/>
-        <param name="Grid/MaxGroundHeight" value="0.2"/>
-        <param name="Grid/ScanDecimation" value="3"/>
-        <param name="Grid/NormalsSegmentation" value="false"/>
-        <param name="Grid/SensorBlindRange2d" value="0.65"/>
-
-        <param name="Grid/SemanticDilation" value="0"/>
-        <param name="Grid/MinSemanticRange" value="0"/>
-        <param name="Grid/MaxSemanticRange" value="0"/>
-
-        <param name="Grid/TemporarilyOccupiedCellColor" value="-1"/>
-        <param name="Grid/ShowTemporarilyOccupiedCells" value="true"/>
-
+        <param name="GridGlobal/MissProb" value="0.4"/>
+        <param name="GridGlobal/HitProb" value="0.7"/>
+        <param name="GridGlobal/MinClampingProb" value="0.1192"/>
+        <param name="GridGlobal/MaxClampingProb" value="0.971"/>
+        <param name="GridGlobal/OccupancyProbThr" value="0.5"/>
+        <param name="GridGlobal/TemporarilyOccupiedCellColor" value="9831741"/>  <!-- 9831741 -->
+        <param name="GridGlobal/ShowTemporarilyOccupiedCells" value="true"/>
+        <param name="Grid/TemporaryMissProb" value="0.4"/>
+        <param name="Grid/TemporaryHitProb" value="0.7"/>
+        <param name="Grid/TemporaryOccupancyProbThr" value="0.5"/>
         <param name="Grid/MaxTemporaryLocalMaps" value="1"/>
-        <param name="GridGlobal/TemporaryOccupancyThr" value="0.6"/>
-        <param name="GridGlobal/TemporaryProbMiss" value="0.4"/>
-        <param name="GridGlobal/TemporaryProbHit" value="0.7"/>
+
+        <param name="LocalMap/MaxVisibleRange" value="0.0"/>
+        <param name="LocalMap/MaxRange2d" value="10.0"/>
+        <param name="LocalMap/MinObstacleHeight" value="0.2"/>
+        <param name="LocalMap/MaxObstacleHeight" value="1.5"/>
+        <param name="LocalMap/MinSemanticRange" value="0.0"/>
+        <param name="LocalMap/MaxSemanticRange" value="0.0"/>
+        <param name="LocalMap/UseRayTracing" value="true"/>
+        <param name="LocalMap/SensorBlindRange2d" value="0.0"/>
+
+        <param name="SemanticDilation/DilationSize" value="20"/>
+
+        <param name="RayTracing/MaxVisibleRange" value="100.0"/>
+        <param name="RayTracing/MaxRayTracingRange" value="10.0"/>
+        <param name="RayTracing/TraceRaysIntoUnknownSpace" value="false"/>
     </node>
 
 </launch>
