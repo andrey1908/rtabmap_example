@@ -62,6 +62,9 @@
     <arg name="grid_map" default="/grid_map"/>
     <arg name="colored_grid_map" default="/colored_grid_map"/>
 
+    <!-- Parameters -->
+    <arg name="cell_size" default="0.10"/>
+
     <!-- Occupanyc grid builder -->
     <node pkg="rtabmap_ros" type="occupancy_grid_builder" name="occupancy_grid_builder" output="screen" args="--uinfo">
         <!-- Frames -->
@@ -127,7 +130,7 @@
         <remap from="colored_grid_map" to="$(arg colored_grid_map)"/>
 
         <!-- Parameters -->
-        <param name="Grid/CellSize" value="0.10"/>
+        <param name="Grid/CellSize" value="$(arg cell_size)"/>
         <param name="Grid/RayTracing" value="true"/>
         <param name="Grid/FromDepth" value="false"/>
         <param name="Grid/RangeMin" value="0"/>
