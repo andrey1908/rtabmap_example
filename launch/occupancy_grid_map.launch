@@ -44,7 +44,7 @@
     <arg name="temporary_subscribe_depth" default="false"/>
     <arg name="temporary_subscribe_stereo" default="false"/>
 
-    <!-- Topics to read data -->
+    <!-- Input topics -->
     <arg name="odom" default="/cartographer/tracked_local_odometry"/>
     <arg name="scan_cloud" default="/velodyne_points"/>
     <arg name="rgb/image" default="/zed_segmentated"/>
