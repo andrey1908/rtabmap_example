@@ -142,7 +142,7 @@
 
         <param name="LocalMap/MaxVisibleRange" value="0.0"/>
         <param name="LocalMap/MaxRange2d" value="10.0"/>
-        <param name="LocalMap/MinObstacleHeight" value="0.0"/>
+        <param name="LocalMap/MinObstacleHeight" value="0.2"/>
         <param name="LocalMap/MaxObstacleHeight" value="1.5"/>
         <param name="LocalMap/MinSemanticRange" value="0.0"/>
         <param name="LocalMap/MaxSemanticRange" value="0.0"/>
