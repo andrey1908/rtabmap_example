@@ -31,7 +31,7 @@ class Rtabmap(RosDockerContainer):
             load_map_path = ""
         if save_map_path is None:
             save_map_path = ""
-        result = self.roslaunch("rtabmap_example", "occupancy_grid_builder.launch",
+        result = self.roslaunch("rtabmap_example", "occupancy_grid_map.launch",
             arguments=
                 f"load_map_path:={load_map_path} "
                 f"save_map_path:={save_map_path} "
