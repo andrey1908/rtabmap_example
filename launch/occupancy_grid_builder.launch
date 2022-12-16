@@ -10,7 +10,7 @@
     <!-- Other -->
     <arg name="cache_map" default="true"/>
     <arg name="needs_localization" default="true"/>
-    <arg name="max_interpolation_time_error" default="0.06"/>
+    <arg name="max_interpolation_time_error" default="0.3"/>
     <arg name="update_max_extrapolation_time" default="1"/>
 
     <!-- Mapping mode -->
