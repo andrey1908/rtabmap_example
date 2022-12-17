@@ -19,10 +19,10 @@ class Rtabmap(RosDockerContainer):
         super().__init__(image_name, container_name, user_name=user_name)
         self.source_files = ['/home/docker_rtabmap/catkin_ws/devel_isolated/setup.bash']
 
-    def create_containter(self, docker_mounts: RtabmapMounts=None, net='host'):
-        if docker_mounts is None:
-            docker_mounts = RtabmapMounts()
-        super().create_containter(docker_mounts=docker_mounts, net=net)
+    def create_containter(self, mounts: RtabmapMounts=None, net='host'):
+        if mounts is None:
+            mounts = RtabmapMounts()
+        super().create_containter(mounts=mounts, net=net)
 
     def run_rtabmap(self, load_map_path=None, save_map_path=None,
             accumulative_mapping=True, temporary_mapping=False,
