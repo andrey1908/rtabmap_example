@@ -1,27 +1,11 @@
 <launch>
 
-    <!-- Frames -->
-    <arg name="map_frame" default="local_map_lidar"/>
+    <!-- Config file -->
+    <arg name="config_path"/>
 
     <!-- Save / load map -->
     <arg name="load_map_path" default=""/>
     <arg name="save_map_path" default=""/>
-
-    <!-- Other -->
-    <arg name="cache_map" default="true"/>
-    <arg name="needs_localization" default="true"/>
-    <arg name="max_interpolation_time_error" default="0.3"/>
-    <arg name="update_max_extrapolation_time" default="1"/>
-
-    <!-- Mapping mode -->
-    <arg name="accumulative_mapping" default="true"/>
-    <arg name="temporary_mapping" default="false"/>
-
-    <!-- Door tracking -->
-    <arg name="door_tracking_small_radius" default="0.3"/>
-    <arg name="door_tracking_large_radius" default="0.7"/>
-    <arg name="draw_door_center_estimation" default="false"/>
-    <arg name="draw_door_corners" default="false"/>
 
     <!-- Data to read -->
     <arg name="subscribe_approx_sync" default="true"/>
@@ -62,33 +46,15 @@
     <arg name="grid_map" default="/grid_map"/>
     <arg name="colored_grid_map" default="/colored_grid_map"/>
 
-    <!-- Parameters -->
-    <arg name="cell_size" default="0.10"/>
-
     <!-- Occupanyc grid builder -->
     <node pkg="rtabmap_ros" type="occupancy_grid_map" name="occupancy_grid_map" output="screen" args="--uinfo">
-        <!-- Frames -->
-        <param name="map_frame" value="$(arg map_frame)"/>
+
+        <!-- Other parameters -->
+        <rosparam command="load" file="$(arg config_path)"/>
 
         <!-- Save / load map -->
         <param name="load_map_path" value="$(arg load_map_path)"/>
         <param name="save_map_path" value="$(arg save_map_path)"/>
-
-        <!-- Other -->
-        <param name="cache_map" value="$(arg cache_map)"/>
-        <param name="needs_localization" value="$(arg needs_localization)"/>
-        <param name="max_interpolation_time_error" value="$(arg max_interpolation_time_error)"/>
-        <param name="update_max_extrapolation_time" value="$(arg update_max_extrapolation_time)"/>
-
-        <!-- Mapping mode -->
-        <param name="accumulative_mapping" value="$(arg accumulative_mapping)"/>
-        <param name="temporary_mapping" value="$(arg temporary_mapping)"/>
-
-        <!-- Door tracking -->
-        <param name="door_tracking_small_radius" value="$(arg door_tracking_small_radius)"/>
-        <param name="door_tracking_large_radius" value="$(arg door_tracking_large_radius)"/>
-        <param name="draw_door_center_estimation" value="$(arg draw_door_center_estimation)"/>
-        <param name="draw_door_corners" value="$(arg draw_door_corners)"/>
 
         <!-- Data to read -->
         <param name="subscribe_approx_sync" value="$(arg subscribe_approx_sync)"/>
@@ -128,35 +94,6 @@
         <!-- Output topics -->
         <remap from="grid_map" to="$(arg grid_map)"/>
         <remap from="colored_grid_map" to="$(arg colored_grid_map)"/>
-
-        <!-- Parameters -->
-        <param name="Grid/CellSize" value="$(arg cell_size)"/>
-        <param name="GridGlobal/MissProb" value="0.4"/>
-        <param name="GridGlobal/HitProb" value="0.7"/>
-        <param name="GridGlobal/MinClampingProb" value="0.1192"/>
-        <param name="GridGlobal/MaxClampingProb" value="0.971"/>
-        <param name="GridGlobal/OccupancyProbThr" value="0.5"/>
-        <param name="GridGlobal/TemporarilyOccupiedCellColor" value="9831741"/>  <!-- 9831741 -->
-        <param name="GridGlobal/ShowTemporarilyOccupiedCells" value="true"/>
-        <param name="Grid/TemporaryMissProb" value="0.4"/>
-        <param name="Grid/TemporaryHitProb" value="0.7"/>
-        <param name="Grid/TemporaryOccupancyProbThr" value="0.5"/>
-        <param name="Grid/MaxTemporaryLocalMaps" value="1"/>
-
-        <param name="LocalMap/MaxVisibleRange" value="0.0"/>
-        <param name="LocalMap/MaxRange2d" value="10.0"/>
-        <param name="LocalMap/MinObstacleHeight" value="0.2"/>
-        <param name="LocalMap/MaxObstacleHeight" value="1.5"/>
-        <param name="LocalMap/MinSemanticRange" value="0.0"/>
-        <param name="LocalMap/MaxSemanticRange" value="0.0"/>
-        <param name="LocalMap/UseRayTracing" value="true"/>
-        <param name="LocalMap/SensorBlindRange2d" value="0.0"/>
-
-        <param name="SemanticDilation/DilationSize" value="20"/>
-
-        <param name="RayTracing/MaxVisibleRange" value="100.0"/>
-        <param name="RayTracing/MaxRayTracingRange" value="10.0"/>
-        <param name="RayTracing/TraceRaysIntoUnknownSpace" value="false"/>
     </node>
 
 </launch>
