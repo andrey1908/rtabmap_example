@@ -2,7 +2,7 @@ map_frame: local_map_lidar
 
 cache_map: true
 needs_localization: true
-max_interpolation_time_error: 0.3
+max_interpolation_time_error: 0.06
 update_max_extrapolation_time: 1
 
 # mapping mode
