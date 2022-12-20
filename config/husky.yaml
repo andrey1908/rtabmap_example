@@ -41,6 +41,7 @@ LocalMap/UseRayTracing: true
 LocalMap/SensorBlindRange2d: 0.0
 
 SemanticDilation/DilationSize: 20
+ObstacleDilation/DilationSize: 0.0
 
 RayTracing/MaxVisibleRange: 100.0
 RayTracing/MaxRayTracingRange: 10.0
