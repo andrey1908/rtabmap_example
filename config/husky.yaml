@@ -23,12 +23,12 @@ GridGlobal/MissProb: 0.4
 GridGlobal/HitProb: 0.7
 GridGlobal/MinClampingProb: 0.1192
 GridGlobal/MaxClampingProb: 0.971
-GridGlobal/OccupancyProbThr: 0.5
+GridGlobal/OccupancyThr: 0.5
 GridGlobal/TemporarilyOccupiedCellColor: 9831741  # 9831741
 GridGlobal/ShowTemporarilyOccupiedCells: true
 Grid/TemporaryMissProb: 0.4
 Grid/TemporaryHitProb: 0.7
-Grid/TemporaryOccupancyProbThr: 0.5
+Grid/TemporaryOccupancyThr: 0.5
 Grid/MaxTemporaryLocalMaps: 1
 
 LocalMap/MaxVisibleRange: 0.0
