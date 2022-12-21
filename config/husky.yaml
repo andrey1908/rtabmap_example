@@ -21,9 +21,9 @@ draw_door_corners: false
 Grid/CellSize: 0.10
 GridGlobal/MissProb: 0.4
 GridGlobal/HitProb: 0.7
-GridGlobal/OccupancyProbThr: 0.5
 GridGlobal/MinClampingProb: 0.1192
 GridGlobal/MaxClampingProb: 0.971
+GridGlobal/OccupancyProbThr: 0.5
 GridGlobal/TemporarilyOccupiedCellColor: 9831741  # 9831741
 GridGlobal/ShowTemporarilyOccupiedCells: true
 Grid/TemporaryMissProb: 0.4
