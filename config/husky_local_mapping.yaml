@@ -34,7 +34,7 @@ Grid/MaxTemporaryLocalMaps: 1
 LocalMap/MaxVisibleRange: 4.0
 LocalMap/MaxRange2d: 0.0
 LocalMap/MinObstacleHeight: 0.2
-LocalMap/MaxObstacleHeight: 1.5
+LocalMap/MaxObstacleHeight: 1.2
 LocalMap/MinSemanticRange: 0.0
 LocalMap/MaxSemanticRange: 0.0
 LocalMap/UseRayTracing: true
