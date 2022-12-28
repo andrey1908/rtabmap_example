@@ -43,13 +43,16 @@
     <arg name="optimization_results" default="/cartographer/optimization_results"/>
 
     <!-- Output topics -->
-    <arg name="grid_map" default="/grid_map"/>
-    <arg name="colored_grid_map" default="/colored_grid_map"/>
+    <arg name="grid_map" default="~grid_map"/>
+    <arg name="colored_grid_map" default="~colored_grid_map"/>
+
+    <!-- Other -->
+    <arg name="node_name" default="occupancy_grid_map"/>
 
     <!-- Occupanyc grid builder -->
-    <node pkg="rtabmap_ros" type="occupancy_grid_map" name="occupancy_grid_map" output="screen" args="--uinfo">
+    <node pkg="rtabmap_ros" type="occupancy_grid_map" name="$(arg node_name)" output="screen" args="--uinfo">
 
-        <!-- Other parameters -->
+        <!-- Config file -->
         <rosparam command="load" file="$(arg config_path)"/>
 
         <!-- Save / load map -->
@@ -77,7 +80,7 @@
         <param name="temporary_subscribe_depth" value="$(arg temporary_subscribe_depth)"/>
         <param name="temporary_subscribe_stereo" value="$(arg temporary_subscribe_stereo)"/>
 
-        <!-- Topics to read data -->
+        <!-- Input topics -->
         <remap from="odom" to="$(arg odom)"/>
         <remap from="scan_cloud" to="$(arg scan_cloud)"/>
         <remap from="rgb/image" to="$(arg rgb/image)"/>

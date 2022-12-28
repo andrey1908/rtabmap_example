@@ -25,15 +25,14 @@ class Rtabmap(RosDockerContainer):
         super().create_containter(mounts=mounts, net=net)
 
     def run_rtabmap(self, config_path,
-            load_map_path=None, save_map_path=None):
-        if load_map_path is None:
-            load_map_path = ""
-        if save_map_path is None:
-            save_map_path = ""
+            load_map_path=None, save_map_path=None,
+            optimization_results_topic=None, node_name=None):
         result = self.roslaunch("rtabmap_example", "occupancy_grid_map.launch",
             arguments=
-                f"config_path:={config_path} "
-                f"load_map_path:={load_map_path} "
-                f"save_map_path:={save_map_path} ",
+                (f"config_path:={config_path} ") +
+                (f"load_map_path:={load_map_path} " if load_map_path else "") +
+                (f"save_map_path:={save_map_path} " if save_map_path else "") +
+                (f"optimization_results:={optimization_results_topic} " if optimization_results_topic else "") +
+                (f"node_name:={node_name} " if node_name else ""),
             source_files=self.source_files)
         return result
