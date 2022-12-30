@@ -28,12 +28,10 @@ def run_rtabmap():
     if not args.local_mapping:
         config_path = osp.join(docker_catkin_ws_folder,
             "src/rtabmap_example/config/husky.yaml")
-        optimization_results_topic = None  # default
         node_name = "occupancy_grid_map"
     else:
         config_path = osp.join(docker_catkin_ws_folder,
             "src/rtabmap_example/config/husky_local_mapping.yaml")
-        optimization_results_topic = "/no_topic"
         node_name = "occupancy_grid_local_map"
 
     if args.load_map:
@@ -59,7 +57,7 @@ def run_rtabmap():
     time_str = time.strftime("%Y-%m-%d_%H.%M.%S")
     results = rtabmap.run_rtabmap(config_path,
         load_map_path=load_map_path, save_map_path=save_map_path,
-        optimization_results_topic=optimization_results_topic, node_name=node_name)
+        node_name=node_name)
 
     logs_folder = osp.abspath(osp.expanduser(osp.join(catkin_ws_folder, "rtabmap_logs")))
     os.makedirs(logs_folder, exist_ok=True)

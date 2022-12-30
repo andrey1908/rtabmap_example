@@ -1,4 +1,4 @@
-map_frame: odom
+map_frame: local_map_lidar
 
 cache_map: true
 needs_localization: true
