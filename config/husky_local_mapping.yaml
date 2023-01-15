@@ -30,7 +30,7 @@ Grid/TemporaryOccupancyThr: 0.5
 Grid/MaxTemporaryLocalMaps: 1
 
 TimedGrid/MaxInterpolationTimeError: 0.06
-TimedGrid/MaxExtrapolationTime: 1.0
+TimedGrid/GuaranteedInterpolationTimeWindow: 1.0
 
 LocalMap/MaxVisibleRange: 4.0
 LocalMap/MaxRange2d: 0.0
