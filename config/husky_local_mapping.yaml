@@ -1,9 +1,7 @@
 map_frame: local_map_lidar
+updated_poses_frame: base_link
 
-cache_map: true
 needs_localization: true
-max_interpolation_time_error: 0.06
-update_max_extrapolation_time: 1
 
 # mapping mode
 accumulative_mapping: false
@@ -30,6 +28,9 @@ Grid/TemporaryMissProb: 0.4
 Grid/TemporaryHitProb: 0.7
 Grid/TemporaryOccupancyThr: 0.5
 Grid/MaxTemporaryLocalMaps: 1
+
+TimedGrid/MaxInterpolationTimeError: 0.06
+TimedGrid/MaxExtrapolationTime: 1.0
 
 LocalMap/MaxVisibleRange: 4.0
 LocalMap/MaxRange2d: 0.0
