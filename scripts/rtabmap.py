@@ -24,6 +24,10 @@ class Rtabmap(RosDockerContainer):
             mounts = RtabmapMounts()
         super().create_containter(mounts=mounts, net=net)
 
+    def build_rtabmap(self):
+        result = self.run("cd ~/catkin_ws && catkin_make_isolated -DCMAKE_BUILD_TYPE=Release")
+        return result
+
     def run_rtabmap(self, config_path,
             load_map_path=None, save_map_path=None,
             optimization_results_topic=None, node_name=None):

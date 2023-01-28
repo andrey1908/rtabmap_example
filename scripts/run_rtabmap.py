@@ -10,6 +10,8 @@ def build_parser():
     parser.add_argument('-lm', '--local-mapping', action='store_true')
     parser.add_argument('--load-map', type=str)
     parser.add_argument('--save-map', type=str)
+
+    parser.add_argument('--build', action='store_true')
     return parser
 
 
@@ -18,10 +20,12 @@ def run_rtabmap():
     args = parser.parse_args()
 
     rtabmap = Rtabmap('rtabmap:latest', 'rtabmap')
-    try:
-        rtabmap.create_containter()
-    except:
-        pass
+    rtabmap.create_containter()
+
+    # build and exit
+    if args.build:
+        rtabmap.build_rtabmap()
+        exit(0)
 
     catkin_ws_folder = osp.abspath(osp.join(osp.dirname(__file__), "../../.."))
     docker_catkin_ws_folder = "/home/docker_rtabmap/catkin_ws"
