@@ -38,7 +38,7 @@ LocalMap/MinObstacleHeight: 0.2
 LocalMap/MaxObstacleHeight: 1.2
 LocalMap/MinSemanticRange: 0.0
 LocalMap/MaxSemanticRange: 0.0
-LocalMap/UseRayTracing: true
+LocalMap/EnableRayTracing: true
 LocalMap/SensorBlindRange2d: 0.0
 
 SemanticDilation/DilationSize: 20
@@ -46,4 +46,4 @@ ObstacleDilation/DilationSize: 0.0
 
 RayTracing/MaxVisibleRange: 4.0
 RayTracing/MaxRayTracingRange: 4.0
-RayTracing/TraceRaysIntoUnknownSpace: true
+RayTracing/TraceIntoUnknownSpace: true
