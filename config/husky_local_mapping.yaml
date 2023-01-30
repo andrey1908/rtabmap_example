@@ -17,13 +17,13 @@ draw_door_corners: false
 ### Rtabmap parameters
 
 Grid/CellSize: 0.02
-GridGlobal/MissProb: 0.4
-GridGlobal/HitProb: 0.7
-GridGlobal/MinClampingProb: 0.1192
-GridGlobal/MaxClampingProb: 0.971
-GridGlobal/OccupancyThr: 0.5
-GridGlobal/TemporarilyOccupiedCellColor: 9831741  # 9831741
-GridGlobal/ShowTemporarilyOccupiedCells: true
+Grid/MissProb: 0.4
+Grid/HitProb: 0.7
+Grid/MinClampingProb: 0.1192
+Grid/MaxClampingProb: 0.971
+Grid/OccupancyThr: 0.5
+Grid/TemporarilyOccupiedCellColor: 9831741  # 9831741
+Grid/ShowTemporarilyOccupiedCells: true
 Grid/TemporaryMissProb: 0.4
 Grid/TemporaryHitProb: 0.7
 Grid/TemporaryOccupancyThr: 0.5
