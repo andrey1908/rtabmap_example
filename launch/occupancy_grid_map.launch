@@ -31,8 +31,8 @@
     <!-- Input topics -->
     <arg name="odom" default="/cartographer/tracked_local_odometry"/>
     <arg name="scan_cloud" default="/velodyne_points"/>
-    <arg name="rgb/image" default="/zed_segmentated"/>
-    <arg name="rgb/camera_info" default="/zed_node/left/camera_info"/>
+    <arg name="rgb/image" default="/realsense_back_segmentated"/>
+    <arg name="rgb/camera_info" default="/realsense_back/color/camera_info"/>
     <arg name="rgb/image_transport" default="raw"/>
     <arg name="rgb_1/image" default="/rgb_1/image"/>
     <arg name="rgb_1/camera_info" default="/rgb_1/camera_info"/>
@@ -53,7 +53,7 @@
     <node pkg="rtabmap_ros" type="occupancy_grid_map" name="$(arg node_name)" output="screen" args="--uinfo">
 
         <!-- Config file -->
-        <rosparam command="load" file="$(arg config_path)"/>
+        <param name="config_path" value="$(arg config_path)"/>
 
         <!-- Save / load map -->
         <param name="load_map_path" value="$(arg load_map_path)"/>
