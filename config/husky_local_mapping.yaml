@@ -36,6 +36,7 @@ TimedOccupancyGridMap:
                 MaxTracingRange: 4.0
                 TraceIntoUnknownSpace: true
         ObstacleDilation:
+            # CellSize
             DilationSize: 0.0
         OccupancyGridBuilder:
             # CellSize
