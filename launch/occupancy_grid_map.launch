@@ -42,10 +42,6 @@
     <arg name="rgb_2/image_transport" default="raw"/>
     <arg name="optimization_results" default="/cartographer/optimization_results"/>
 
-    <!-- Output topics -->
-    <arg name="grid_map" default="~grid_map"/>
-    <arg name="colored_grid_map" default="~colored_grid_map"/>
-
     <!-- Other -->
     <arg name="node_name" default="occupancy_grid_map"/>
 
@@ -93,10 +89,6 @@
         <remap from="rgb_2/camera_info" to="$(arg rgb_2/camera_info)"/>
         <param name="rgb_2/image_transport" value="$(arg rgb_2/image_transport)"/>
         <remap from="optimization_results" to="$(arg optimization_results)"/>
-
-        <!-- Output topics -->
-        <remap from="grid_map" to="$(arg grid_map)"/>
-        <remap from="colored_grid_map" to="$(arg colored_grid_map)"/>
     </node>
 
 </launch>
