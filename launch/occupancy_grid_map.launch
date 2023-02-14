@@ -8,38 +8,43 @@
     <arg name="save_map_path" default=""/>
 
     <!-- Data to read -->
-    <arg name="subscribe_approx_sync" default="true"/>
-    <arg name="subscribe_queue_size" default="10"/>
-    <arg name="subscribe_odom" default="true"/>
-    <arg name="subscribe_scan" default="false"/>
-    <arg name="subscribe_scan_cloud" default="true"/>
-    <arg name="subscribe_rgb" default="false"/>
-    <arg name="subscribe_rgb_cameras" default="1"/>
-    <arg name="subscribe_depth" default="false"/>
-    <arg name="subscribe_stereo" default="false"/>
+    <arg name="accum/approx_sync" default="true"/>
+    <arg name="accum/queue_size" default="10"/>
+    <arg name="accum/subscribe_rgb" default="false"/>
+    <arg name="accum/num_rgb" default="1"/>
 
-    <arg name="temporary_subscribe_approx_sync" default="true"/>
-    <arg name="temporary_subscribe_queue_size" default="10"/>
-    <arg name="temporary_subscribe_odom" default="true"/>
-    <arg name="temporary_subscribe_scan" default="false"/>
-    <arg name="temporary_subscribe_scan_cloud" default="true"/>
-    <arg name="temporary_subscribe_rgb" default="false"/>
-    <arg name="temporary_subscribe_rgb_cameras" default="1"/>
-    <arg name="temporary_subscribe_depth" default="false"/>
-    <arg name="temporary_subscribe_stereo" default="false"/>
+    <arg name="temp/approx_sync" default="true"/>
+    <arg name="temp/queue_size" default="10"/>
+    <arg name="temp/subscribe_rgb" default="false"/>
+    <arg name="temp/num_rgb" default="1"/>
 
     <!-- Input topics -->
-    <arg name="odom" default="/cartographer/tracked_local_odometry"/>
-    <arg name="scan_cloud" default="/velodyne_points"/>
-    <arg name="rgb/image" default="/realsense_back_segmentated"/>
-    <arg name="rgb/camera_info" default="/realsense_back/color/camera_info"/>
-    <arg name="rgb/image_transport" default="raw"/>
-    <arg name="rgb_1/image" default="/rgb_1/image"/>
-    <arg name="rgb_1/camera_info" default="/rgb_1/camera_info"/>
-    <arg name="rgb_1/image_transport" default="raw"/>
-    <arg name="rgb_2/image" default="/rgb_2/image"/>
-    <arg name="rgb_2/camera_info" default="/rgb_2/camera_info"/>
-    <arg name="rgb_2/image_transport" default="raw"/>
+    <arg name="accum/global_odom" default="/cartographer/tracked_global_odometry"/>
+    <arg name="accum/local_odom" default="/cartographer/tracked_local_odometry"/>
+    <arg name="accum/point_cloud" default="/velodyne_points"/>
+    <arg name="accum/rgb/image" default="/realsense_back_segmentated"/>
+    <arg name="accum/rgb/camera_info" default="/realsense_back/color/camera_info"/>
+    <arg name="accum/rgb/image_transport" default="raw"/>
+    <arg name="accum/rgb_1/image" default="/rgb_1/image"/>
+    <arg name="accum/rgb_1/camera_info" default="/rgb_1/camera_info"/>
+    <arg name="accum/rgb_1/image_transport" default="raw"/>
+    <arg name="accum/rgb_2/image" default="/rgb_2/image"/>
+    <arg name="accum/rgb_2/camera_info" default="/rgb_2/camera_info"/>
+    <arg name="accum/rgb_2/image_transport" default="raw"/>
+
+    <arg name="temp/global_odom" default="/cartographer/tracked_global_odometry"/>
+    <arg name="temp/local_odom" default="/cartographer/tracked_local_odometry"/>
+    <arg name="temp/point_cloud" default="/velodyne_points"/>
+    <arg name="temp/rgb/image" default="/realsense_back_segmentated"/>
+    <arg name="temp/rgb/camera_info" default="/realsense_back/color/camera_info"/>
+    <arg name="temp/rgb/image_transport" default="raw"/>
+    <arg name="temp/rgb_1/image" default="/rgb_1/image"/>
+    <arg name="temp/rgb_1/camera_info" default="/rgb_1/camera_info"/>
+    <arg name="temp/rgb_1/image_transport" default="raw"/>
+    <arg name="temp/rgb_2/image" default="/rgb_2/image"/>
+    <arg name="temp/rgb_2/camera_info" default="/rgb_2/camera_info"/>
+    <arg name="temp/rgb_2/image_transport" default="raw"/>
+
     <arg name="optimization_results" default="/cartographer/optimization_results"/>
 
     <!-- Other -->
@@ -56,38 +61,43 @@
         <param name="save_map_path" value="$(arg save_map_path)"/>
 
         <!-- Data to read -->
-        <param name="subscribe_approx_sync" value="$(arg subscribe_approx_sync)"/>
-        <param name="subscribe_queue_size" value="$(arg subscribe_queue_size)"/>
-        <param name="subscribe_odom" value="$(arg subscribe_odom)"/>
-        <param name="subscribe_scan" value="$(arg subscribe_scan)"/>
-        <param name="subscribe_scan_cloud" value="$(arg subscribe_scan_cloud)"/>
-        <param name="subscribe_rgb" value="$(arg subscribe_rgb)"/>
-        <param name="subscribe_rgb_cameras" value="$(arg subscribe_rgb_cameras)"/>
-        <param name="subscribe_depth" value="$(arg subscribe_depth)"/>
-        <param name="subscribe_stereo" value="$(arg subscribe_stereo)"/>
+        <param name="accum/approx_sync" value="$(arg accum/approx_sync)"/>
+        <param name="accum/queue_size" value="$(arg accum/queue_size)"/>
+        <param name="accum/subscribe_rgb" value="$(arg accum/subscribe_rgb)"/>
+        <param name="accum/num_rgb" value="$(arg accum/num_rgb)"/>
 
-        <param name="temporary_subscribe_approx_sync" value="$(arg temporary_subscribe_approx_sync)"/>
-        <param name="temporary_subscribe_queue_size" value="$(arg temporary_subscribe_queue_size)"/>
-        <param name="temporary_subscribe_odom" value="$(arg temporary_subscribe_odom)"/>
-        <param name="temporary_subscribe_scan" value="$(arg temporary_subscribe_scan)"/>
-        <param name="temporary_subscribe_scan_cloud" value="$(arg temporary_subscribe_scan_cloud)"/>
-        <param name="temporary_subscribe_rgb" value="$(arg temporary_subscribe_rgb)"/>
-        <param name="temporary_subscribe_rgb_cameras" value="$(arg temporary_subscribe_rgb_cameras)"/>
-        <param name="temporary_subscribe_depth" value="$(arg temporary_subscribe_depth)"/>
-        <param name="temporary_subscribe_stereo" value="$(arg temporary_subscribe_stereo)"/>
+        <param name="temp/approx_sync" value="$(arg temp/approx_sync)"/>
+        <param name="temp/queue_size" value="$(arg temp/queue_size)"/>
+        <param name="temp/subscribe_rgb" value="$(arg temp/subscribe_rgb)"/>
+        <param name="temp/num_rgb" value="$(arg temp/num_rgb)"/>
 
         <!-- Input topics -->
-        <remap from="odom" to="$(arg odom)"/>
-        <remap from="scan_cloud" to="$(arg scan_cloud)"/>
-        <remap from="rgb/image" to="$(arg rgb/image)"/>
-        <remap from="rgb/camera_info" to="$(arg rgb/camera_info)"/>
-        <param name="rgb/image_transport" value="$(arg rgb/image_transport)"/>
-        <remap from="rgb_1/image" to="$(arg rgb_1/image)"/>
-        <remap from="rgb_1/camera_info" to="$(arg rgb_1/camera_info)"/>
-        <param name="rgb_1/image_transport" value="$(arg rgb_1/image_transport)"/>
-        <remap from="rgb_2/image" to="$(arg rgb_2/image)"/>
-        <remap from="rgb_2/camera_info" to="$(arg rgb_2/camera_info)"/>
-        <param name="rgb_2/image_transport" value="$(arg rgb_2/image_transport)"/>
+        <remap from="accum/global_odom" to="$(arg accum/global_odom)"/>
+        <remap from="accum/local_odom" to="$(arg accum/local_odom)"/>
+        <remap from="accum/point_cloud" to="$(arg accum/point_cloud)"/>
+        <remap from="accum/rgb/image" to="$(arg accum/rgb/image)"/>
+        <remap from="accum/rgb/camera_info" to="$(arg accum/rgb/camera_info)"/>
+        <param name="accum/rgb/image_transport" value="$(arg accum/rgb/image_transport)"/>
+        <remap from="accum/rgb_1/image" to="$(arg accum/rgb_1/image)"/>
+        <remap from="accum/rgb_1/camera_info" to="$(arg accum/rgb_1/camera_info)"/>
+        <param name="accum/rgb_1/image_transport" value="$(arg accum/rgb_1/image_transport)"/>
+        <remap from="accum/rgb_2/image" to="$(arg accum/rgb_2/image)"/>
+        <remap from="accum/rgb_2/camera_info" to="$(arg accum/rgb_2/camera_info)"/>
+        <param name="accum/rgb_2/image_transport" value="$(arg accum/rgb_2/image_transport)"/>
+
+        <remap from="temp/global_odom" to="$(arg temp/global_odom)"/>
+        <remap from="temp/local_odom" to="$(arg temp/local_odom)"/>
+        <remap from="temp/point_cloud" to="$(arg temp/point_cloud)"/>
+        <remap from="temp/rgb/image" to="$(arg temp/rgb/image)"/>
+        <remap from="temp/rgb/camera_info" to="$(arg temp/rgb/camera_info)"/>
+        <param name="temp/rgb/image_transport" value="$(arg temp/rgb/image_transport)"/>
+        <remap from="temp/rgb_1/image" to="$(arg temp/rgb_1/image)"/>
+        <remap from="temp/rgb_1/camera_info" to="$(arg temp/rgb_1/camera_info)"/>
+        <param name="temp/rgb_1/image_transport" value="$(arg temp/rgb_1/image_transport)"/>
+        <remap from="temp/rgb_2/image" to="$(arg temp/rgb_2/image)"/>
+        <remap from="temp/rgb_2/camera_info" to="$(arg temp/rgb_2/camera_info)"/>
+        <param name="temp/rgb_2/image_transport" value="$(arg temp/rgb_2/image_transport)"/>
+
         <remap from="optimization_results" to="$(arg optimization_results)"/>
     </node>
 
