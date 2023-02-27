@@ -2,7 +2,10 @@ import argparse
 import time
 import os
 import os.path as osp
-from .rtabmap import Rtabmap, RtabmapMounts
+if __name__ == '__main__':
+    from rtabmap import Rtabmap, RtabmapMounts
+else:
+    from .rtabmap import Rtabmap, RtabmapMounts
 
 
 def build_parser():
@@ -67,3 +70,7 @@ def run_rtabmap():
     os.makedirs(logs_folder, exist_ok=True)
     with open(osp.join(logs_folder, f"{time_str}.txt"), 'w') as f:
         f.write(results.stdout)
+
+
+if __name__ == '__main__':
+    run_rtabmap()
