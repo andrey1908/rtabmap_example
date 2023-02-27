@@ -46,6 +46,8 @@
     <arg name="temp/rgb_2/image_transport" default="raw"/>
 
     <arg name="optimization_results" default="/cartographer/optimization_results"/>
+    <arg name="dilated_semantic_image" default="dilated_semantic_image"/>
+    <arg name="tracked_objects" default="tracked_objects"/>
 
     <!-- Other -->
     <arg name="node_name" default="occupancy_grid_map"/>
@@ -99,6 +101,8 @@
         <param name="temp/rgb_2/image_transport" value="$(arg temp/rgb_2/image_transport)"/>
 
         <remap from="optimization_results" to="$(arg optimization_results)"/>
+        <remap from="dilated_semantic_image" to="$(arg dilated_semantic_image)"/>
+        <remap from="tracked_objects" to="$(arg tracked_objects)"/>
     </node>
 
 </launch>
