@@ -53,4 +53,5 @@ TimedOccupancyGridMap:
             TemporaryHitProb: 0.7
             TemporaryOccupancyProbThr: 0.5
             MaxTemporaryLocalMaps: 1
+        EnableObjectTracking: false
 
