@@ -9,6 +9,8 @@ class RtabmapMounts(DockerMounts):
 
     def pass_rtabmap_to_docker(self):
         rtabmap_ws_folder = (osp.join(osp.dirname(__file__), '../../..'))
+        if not osp.isdir(osp.join(rtabmap_ws_folder, 'src')):
+            raise RuntimeError("Looks like rtabmap_example package is not in 'src' folder")
         self.docker_rtabmap_ws_folder, volume = \
             DockerMounts.pass_folders_to_docker(rtabmap_ws_folder, '/home/docker_rtabmap/catkin_ws')
         self.volume_args = self.volume_args + f'-v {volume} '
