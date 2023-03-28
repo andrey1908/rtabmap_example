@@ -43,6 +43,8 @@ def run_rtabmap():
         exit(0)
 
     catkin_ws_folder = osp.abspath(osp.join(osp.dirname(__file__), "../../.."))
+    if not osp.isdir(osp.join(catkin_ws_folder, 'src')):
+        raise RuntimeError("Looks like rtabmap_example package is not in 'src' folder")
     docker_catkin_ws_folder = "/home/docker_rtabmap/catkin_ws"
 
     if not args.local_mapping:
