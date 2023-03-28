@@ -19,10 +19,8 @@ def build_parser():
     return parser
 
 
-def getPathInsideDocker(path: str):
-    catkin_ws_folder = osp.abspath(osp.join(osp.dirname(__file__), "../../.."))
-    docker_catkin_ws_folder = "/home/docker_rtabmap/catkin_ws"
-
+def getPathInsideDocker(path: str,
+        catkin_ws_folder: str, docker_catkin_ws_folder: str):
     full_path = osp.abspath(osp.expanduser(path))
     if not full_path.startswith(catkin_ws_folder + '/'):
         raise RuntimeError(f"Load map file {path} should be in "
@@ -46,6 +44,9 @@ def run_rtabmap():
 
     catkin_ws_folder = osp.abspath(osp.join(osp.dirname(__file__), "../../.."))
     docker_catkin_ws_folder = "/home/docker_rtabmap/catkin_ws"
+    if not osp.isdir(osp.join(catkin_ws_folder, 'src')):
+        raise RuntimeError("Looks like rtabmap_example package is not in 'src' folder")
+
     if not args.local_mapping:
         config_path = osp.join(docker_catkin_ws_folder,
             "src/rtabmap_example/config/husky.yaml")
@@ -56,17 +57,20 @@ def run_rtabmap():
         node_name = "occupancy_grid_local_map"
 
     if args.load_map:
-        load_map_path = getPathInsideDocker(args.load_map)
+        load_map_path = getPathInsideDocker(args.load_map,
+            catkin_ws_folder, docker_catkin_ws_folder)
     else:
         load_map_path = None
 
     if args.save_map:
-        save_map_path = getPathInsideDocker(args.save_map)
+        save_map_path = getPathInsideDocker(args.save_map,
+            catkin_ws_folder, docker_catkin_ws_folder)
     else:
         save_map_path = None
 
     if args.save_tracking_results:
-        save_tracking_results_path = getPathInsideDocker(args.save_tracking_results)
+        save_tracking_results_path = getPathInsideDocker(args.save_tracking_results,
+            catkin_ws_folder, docker_catkin_ws_folder)
     else:
         save_tracking_results_path = None
 
