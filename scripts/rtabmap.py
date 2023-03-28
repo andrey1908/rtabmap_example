@@ -30,12 +30,14 @@ class Rtabmap(RosDockerContainer):
 
     def run_rtabmap(self, config_path,
             load_map_path=None, save_map_path=None,
+            save_tracking_results_path=None,
             optimization_results_topic=None, node_name=None):
         result = self.roslaunch("rtabmap_example", "occupancy_grid_map.launch",
             arguments=
                 (f"config_path:={config_path} ") +
                 (f"load_map_path:={load_map_path} " if load_map_path else "") +
                 (f"save_map_path:={save_map_path} " if save_map_path else "") +
+                (f"save_tracking_results_path:={save_tracking_results_path} " if save_tracking_results_path else "") +
                 (f"optimization_results:={optimization_results_topic} " if optimization_results_topic else "") +
                 (f"node_name:={node_name} " if node_name else ""),
             source_files=self.source_files)

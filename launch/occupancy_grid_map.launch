@@ -7,6 +7,8 @@
     <arg name="load_map_path" default=""/>
     <arg name="save_map_path" default=""/>
 
+    <arg name="save_tracking_results_path" default=""/>
+
     <!-- Data to read -->
     <arg name="accum/approx_sync" default="true"/>
     <arg name="accum/queue_size" default="10"/>
@@ -61,6 +63,8 @@
         <!-- Save / load map -->
         <param name="load_map_path" value="$(arg load_map_path)"/>
         <param name="save_map_path" value="$(arg save_map_path)"/>
+
+        <param name="save_tracking_results_path" value="$(arg save_tracking_results_path)"/>
 
         <!-- Data to read -->
         <param name="accum/approx_sync" value="$(arg accum/approx_sync)"/>
