@@ -57,6 +57,8 @@
     <!-- Occupanyc grid builder -->
     <node pkg="rtabmap_ros" type="occupancy_grid_map" name="$(arg node_name)" output="screen" args="--uinfo">
 
+        <!-- <param name="save_raw_data_path" value="/home/docker_rtabmap/catkin_ws/test_data/polygon/test_data.rd"/> -->
+
         <!-- Config file -->
         <param name="config_path" value="$(arg config_path)"/>
 
