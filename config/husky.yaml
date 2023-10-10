@@ -25,13 +25,13 @@ TimedOccupancyGridMap:
         CellSize: 0.1
         LocalMapBuilder:
             # CellSize
-            MaxVisibleRange: 0.0
+            MaxVisibleRange: -1.0
             MinObstacleHeight: 0.2
             MaxObstacleHeight: 1.2
             SemanticDilation:
                 DilationSize: 20
             MinSemanticRange: 0.0
-            MaxSemanticRange: 0.0
+            MaxSemanticRange: -1.0
             EnableRayTracing: true
             RayTracing:
                 # CellSize
