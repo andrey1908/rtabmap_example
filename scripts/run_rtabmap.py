@@ -2,6 +2,7 @@ import argparse
 import time
 import os
 import os.path as osp
+import glob
 if __name__ == '__main__':
     from rtabmap import Rtabmap, RtabmapMounts
 else:
@@ -14,6 +15,8 @@ def build_parser():
     parser.add_argument('--load-map', type=str)
     parser.add_argument('--save-map', type=str)
     parser.add_argument('--save-tracking-results', type=str)
+
+    parser.add_argument('--log-rosbag', action='store_true')
 
     parser.add_argument('--build', action='store_true')
     return parser
@@ -28,6 +31,24 @@ def getPathInsideDocker(path: str,
     docker_path = osp.join(docker_catkin_ws_folder,
         osp.relpath(full_path, catkin_ws_folder))
     return docker_path
+
+
+def removeOldRosbagLogFiles(folder, max_total_size):  # in MB
+    files = sorted(glob.glob(folder + "/*.bag"))
+    sizes = list(map(osp.getsize, files))
+    sizes = [size / 1024 / 1024 for size in sizes]
+
+    accum_size = 0
+    i = len(files)
+    while accum_size <= max_total_size:
+        i -= 1
+        if i < 0:
+            break
+        accum_size += sizes[i]
+
+    i += 1
+    for j in range(i):
+        os.remove(files[j])
 
 
 def run_rtabmap():
@@ -75,13 +96,25 @@ def run_rtabmap():
         save_tracking_results_path = None
 
     time_str = time.strftime("%Y-%m-%d_%H.%M.%S")
+    logs_folder = osp.abspath(osp.expanduser(osp.join(catkin_ws_folder, "rtabmap_logs")))
+    docker_logs_folder = osp.join(docker_catkin_ws_folder, "rtabmap_logs")
+    os.makedirs(logs_folder, exist_ok=True)
+
+    if args.log_rosbag:
+        removeOldRosbagLogFiles(logs_folder, max_total_size=2048)
+        topics_to_record = ['/tf', '/tf_static',
+            '/cartographer/tracked_local_odometry', '/cartographer/tracked_global_odometry', '/occupancy_grid_map/grid_map',
+            '/cartographer/trajectory_node_list', '/cartographer/constraint_list']
+        docker_out_rosbag_log_file = osp.join(docker_logs_folder, f"{time_str}.bag")
+        rtabmap.rosrun_async("rosbag", "record", arguments=f"{' '.join(topics_to_record)} -O {docker_out_rosbag_log_file}", session='rtabmap_rosbag_log')
+
     results = rtabmap.run_rtabmap(config_path,
         load_map_path=load_map_path, save_map_path=save_map_path,
         save_tracking_results_path=save_tracking_results_path,
         node_name=node_name)
 
-    logs_folder = osp.abspath(osp.expanduser(osp.join(catkin_ws_folder, "rtabmap_logs")))
-    os.makedirs(logs_folder, exist_ok=True)
+    if args.log_rosbag:
+        rtabmap.stop_session('rtabmap_rosbag_log')
     with open(osp.join(logs_folder, f"{time_str}.txt"), 'w') as f:
         f.write(results.stdout)
 
