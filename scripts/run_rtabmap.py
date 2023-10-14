@@ -16,6 +16,8 @@ def build_parser():
     parser.add_argument('--save-map', type=str)
     parser.add_argument('--save-tracking-results', type=str)
 
+    parser.add_argument('-sem', '--use-semantic', action='store_true')
+
     parser.add_argument('--log-rosbag', action='store_true')
 
     parser.add_argument('--build', action='store_true')
@@ -111,7 +113,7 @@ def run_rtabmap():
     results = rtabmap.run_rtabmap(config_path,
         load_map_path=load_map_path, save_map_path=save_map_path,
         save_tracking_results_path=save_tracking_results_path,
-        node_name=node_name)
+        node_name=node_name, use_semantic=args.use_semantic)
 
     if args.log_rosbag:
         rtabmap.stop_session('rtabmap_rosbag_log')
