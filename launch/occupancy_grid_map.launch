@@ -1,7 +1,7 @@
 <launch>
 
-    <!-- Config file -->
-    <arg name="config_path"/>
+    <!-- Config files -->
+    <arg name="config_paths"/>
 
     <!-- Save / load map -->
     <arg name="load_map_path" default=""/>
@@ -59,8 +59,8 @@
 
         <!-- <param name="save_raw_data_path" value="/home/docker_rtabmap/catkin_ws/test_data/polygon/test_data.rd"/> -->
 
-        <!-- Config file -->
-        <param name="config_path" value="$(arg config_path)"/>
+        <!-- Config files -->
+        <param name="config_paths" value="$(arg config_paths)"/>
 
         <!-- Save / load map -->
         <param name="load_map_path" value="$(arg load_map_path)"/>

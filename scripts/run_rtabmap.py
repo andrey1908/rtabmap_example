@@ -70,13 +70,13 @@ def run_rtabmap():
         raise RuntimeError("Looks like rtabmap_example package is not in 'src' folder")
     docker_catkin_ws_folder = "/home/docker_rtabmap/catkin_ws"
 
+    config_paths = [osp.join(docker_catkin_ws_folder,
+        "src/rtabmap_example/config/husky.yaml")]
     if not args.local_mapping:
-        config_path = osp.join(docker_catkin_ws_folder,
-            "src/rtabmap_example/config/husky.yaml")
         node_name = "occupancy_grid_map"
     else:
-        config_path = osp.join(docker_catkin_ws_folder,
-            "src/rtabmap_example/config/husky_local_mapping.yaml")
+        config_paths.append(osp.join(docker_catkin_ws_folder,
+            "src/rtabmap_example/config/husky_enable_local_mapping.yaml"))
         node_name = "occupancy_grid_local_map"
 
     if args.load_map:
@@ -110,7 +110,7 @@ def run_rtabmap():
         docker_out_rosbag_log_file = osp.join(docker_logs_folder, f"{time_str}.bag")
         rtabmap.rosrun_async("rosbag", "record", arguments=f"{' '.join(topics_to_record)} -O {docker_out_rosbag_log_file}", session='rtabmap_rosbag_log')
 
-    results = rtabmap.run_rtabmap(config_path,
+    results = rtabmap.run_rtabmap(config_paths,
         load_map_path=load_map_path, save_map_path=save_map_path,
         save_tracking_results_path=save_tracking_results_path,
         node_name=node_name, use_semantic=args.use_semantic)

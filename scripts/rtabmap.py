@@ -30,14 +30,14 @@ class Rtabmap(RosDockerContainer):
         result = self.run("cd ~/catkin_ws && catkin_make_isolated -DCMAKE_BUILD_TYPE=Release")
         return result
 
-    def run_rtabmap(self, config_path,
+    def run_rtabmap(self, config_paths,
             load_map_path=None, save_map_path=None,
             save_tracking_results_path=None,
             optimization_results_topic=None, node_name=None,
             use_semantic=False):
         result = self.roslaunch("rtabmap_example", "occupancy_grid_map.launch",
             arguments=
-                (f"config_path:={config_path} ") +
+                (f"config_paths:={','.join(config_paths)} ") +
                 (f"load_map_path:={load_map_path} " if load_map_path else "") +
                 (f"save_map_path:={save_map_path} " if save_map_path else "") +
                 (f"save_tracking_results_path:={save_tracking_results_path} " if save_tracking_results_path else "") +
