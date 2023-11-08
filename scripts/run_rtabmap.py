@@ -3,6 +3,7 @@ import time
 import os
 import os.path as osp
 import glob
+import shutil
 if __name__ == '__main__':
     from rtabmap import Rtabmap, RtabmapMounts
 else:
@@ -19,6 +20,7 @@ def build_parser():
     parser.add_argument('-sem', '--use-semantic', action='store_true')
 
     parser.add_argument('--log-rosbag', action='store_true')
+    parser.add_argument('--move-rosbags-to', type=str)
 
     parser.add_argument('--build', action='store_true')
     return parser
@@ -51,6 +53,12 @@ def removeOldRosbagLogFiles(folder, max_total_size):  # in MB
     i += 1
     for j in range(i):
         os.remove(files[j])
+
+
+def moveRosbagsTo(from_folder, to_folder):
+    files = sorted(glob.glob(from_folder + "/*.bag"))
+    for file in files:
+        shutil.move(file, to_folder)
 
 
 def run_rtabmap():
@@ -117,6 +125,10 @@ def run_rtabmap():
 
     if args.log_rosbag:
         rtabmap.stop_session('rtabmap_rosbag_log')
+        if args.move_rosbags_to:
+            os.makedirs(args.move_rosbags_to, exist_ok=True)
+            moveRosbagsTo(logs_folder, args.move_rosbags_to)
+
     with open(osp.join(logs_folder, f"{time_str}.txt"), 'w') as f:
         f.write(results.stdout)
 
