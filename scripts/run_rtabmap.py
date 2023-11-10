@@ -61,9 +61,10 @@ def moveRosbagsTo(from_folder, to_folder):
         shutil.move(file, to_folder)
 
 
-def run_rtabmap():
+def run_rtabmap(**kwargs):
     parser = build_parser()
     args = parser.parse_args()
+    args.__dict__.update(kwargs)
 
     rtabmap = Rtabmap('rtabmap:latest', 'rtabmap')
     rtabmap.create_containter()
