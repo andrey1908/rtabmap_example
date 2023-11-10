@@ -38,7 +38,7 @@ def getPathInsideDocker(path: str,
 
 
 def removeOldRosbagLogFiles(folder, max_total_size):  # in MB
-    files = sorted(glob.glob(folder + "/*.bag"))
+    files = sorted(glob.glob(folder + "/*.bag") + glob.glob(folder + "/*.bag.active"))
     sizes = list(map(osp.getsize, files))
     sizes = [size / 1024 / 1024 for size in sizes]
 
@@ -111,12 +111,13 @@ def run_rtabmap():
     os.makedirs(logs_folder, exist_ok=True)
 
     if args.log_rosbag:
-        removeOldRosbagLogFiles(logs_folder, max_total_size=2048)
+        removeOldRosbagLogFiles(logs_folder, max_total_size=1024)
         topics_to_record = ['/tf', '/tf_static',
-            '/cartographer/tracked_local_odometry', '/cartographer/tracked_global_odometry', '/occupancy_grid_map/grid_map',
+            '/cartographer/tracked_local_odometry', '/cartographer/tracked_global_odometry',
             '/cartographer/trajectory_node_list', '/cartographer/constraint_list']
         docker_out_rosbag_log_file = osp.join(docker_logs_folder, f"{time_str}.bag")
-        rtabmap.rosrun_async("rosbag", "record", arguments=f"{' '.join(topics_to_record)} -O {docker_out_rosbag_log_file}", session='rtabmap_rosbag_log')
+        rtabmap.rosrun_async("rosbag", "record",
+            arguments=f"{' '.join(topics_to_record)} -O {docker_out_rosbag_log_file}", session='rtabmap_rosbag_log')
 
     results = rtabmap.run_rtabmap(config_paths,
         load_map_path=load_map_path, save_map_path=save_map_path,
@@ -127,7 +128,9 @@ def run_rtabmap():
         rtabmap.stop_session('rtabmap_rosbag_log')
         if args.move_rosbags_to:
             os.makedirs(args.move_rosbags_to, exist_ok=True)
+            print("Moving rosbag logs to HDD. Please wait...")
             moveRosbagsTo(logs_folder, args.move_rosbags_to)
+            print("Done.")
 
     with open(osp.join(logs_folder, f"{time_str}.txt"), 'w') as f:
         f.write(results.stdout)
