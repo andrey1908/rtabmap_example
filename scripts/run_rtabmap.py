@@ -4,9 +4,9 @@ import os
 import os.path as osp
 import glob
 import shutil
-if __name__ == '__main__':
+try:
     from rtabmap import Rtabmap, RtabmapMounts
-else:
+except ImportError:
     from .rtabmap import Rtabmap, RtabmapMounts
 
 
