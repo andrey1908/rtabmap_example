@@ -22,7 +22,7 @@ cd ~/rtabmap_ws/src
 git clone http://github.com/andrey1908/rtabmap
 git clone http://github.com/andrey1908/rtabmap_ros
 git clone http://github.com/andrey1908/rtabmap_example
-git clone http://github.com/andrey1908/kas_metrics
+git clone http://github.com/andrey1908/kas_utils
 git clone http://github.com/andrey1908/slam_communication_msgs
 git clone http://github.com/andrey1908/colored_occupancy_grid
 ```
