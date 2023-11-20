@@ -25,6 +25,8 @@ def build_parser():
     parser.add_argument('--move-rosbags-to', type=str)
 
     parser.add_argument('--build', action='store_true')
+
+    parser.add_argument('-args', '--args', action='store_true')  # workaround to pass args
     return parser
 
 
@@ -54,7 +56,7 @@ def moveRosbagsTo(from_folder, to_folder):
 
 def run_rtabmap():
     parser = build_parser()
-    args = parser.parse_args()
+    args, unknown_args = parser.parse_known_args()
 
     rtabmap = Rtabmap()
     rtabmap.create_containter()
@@ -81,7 +83,7 @@ def run_rtabmap():
     results = rtabmap.run_rtabmap(args.config_files,
         load_map_path=args.load_map, save_map_path=args.save_map,
         save_tracking_results_path=args.save_tracking_results,
-        node_name=args.node_name, use_semantic=args.use_semantic)
+        node_name=args.node_name, use_semantic=args.use_semantic, *unknown_args)
 
     if args.log_rosbag:
         rtabmap.stop_session('rtabmap_rosbag_log')
