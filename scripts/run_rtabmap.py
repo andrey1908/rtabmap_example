@@ -12,7 +12,9 @@ except ImportError:
 
 def build_parser():
     parser = argparse.ArgumentParser()
-    parser.add_argument('-lm', '--local-mapping', action='store_true')
+    parser.add_argument('--node-name', type=str, default="occupancy_grid_map")
+
+    parser.add_argument('--config-files', type=str, nargs='+', required=True)
     parser.add_argument('--load-map', type=str)
     parser.add_argument('--save-map', type=str)
     parser.add_argument('--save-tracking-results', type=str)
@@ -50,10 +52,9 @@ def moveRosbagsTo(from_folder, to_folder):
         shutil.move(file, to_folder)
 
 
-def run_rtabmap(**kwargs):
+def run_rtabmap():
     parser = build_parser()
     args = parser.parse_args()
-    args.__dict__.update(kwargs)
 
     rtabmap = Rtabmap()
     rtabmap.create_containter()
@@ -62,13 +63,6 @@ def run_rtabmap(**kwargs):
     if args.build:
         rtabmap.build_rtabmap()
         exit(0)
-
-    config_paths = [osp.join(osp.dirname(__file__), "../config/husky.yaml")]
-    if args.local_mapping:
-        config_paths.append(osp.join(osp.dirname(__file__), "../config/husky_enable_local_mapping.yaml"))
-        node_name = "occupancy_grid_local_map"
-    else:
-        node_name = "occupancy_grid_map"
 
     time_str = time.strftime("%Y-%m-%d_%H.%M.%S")
     catkin_ws_folder = osp.abspath(osp.join(osp.dirname(__file__), "../../.."))
@@ -84,10 +78,10 @@ def run_rtabmap(**kwargs):
         rtabmap.rosrun_async("rosbag", "record",
             arguments=f"{' '.join(topics_to_record)} -O {docker_out_rosbag_log_file}", session='rtabmap_rosbag_log')
 
-    results = rtabmap.run_rtabmap(config_paths,
+    results = rtabmap.run_rtabmap(args.config_files,
         load_map_path=args.load_map, save_map_path=args.save_map,
         save_tracking_results_path=args.save_tracking_results,
-        node_name=node_name, use_semantic=args.use_semantic)
+        node_name=args.node_name, use_semantic=args.use_semantic)
 
     if args.log_rosbag:
         rtabmap.stop_session('rtabmap_rosbag_log')
