@@ -26,6 +26,16 @@ TimedOccupancyGridMap:
         LocalMapBuilder:
             # CellSize
             MaxVisibleRange: -1.0
+            SensorIgnoreAreas: []
+                # - length: 0.4
+                #   width: 0.3
+                #   height: 0.2
+                #   x: 0.75
+                #   y: 0.13
+                #   z: -0.25
+                #   roll: 0
+                #   pitch: 0
+                #   yaw: 0
             MinObstacleHeight: 0.2
             MaxObstacleHeight: 1.2
             SemanticDilation:
