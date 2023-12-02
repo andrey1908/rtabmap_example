@@ -15,8 +15,8 @@ draw_door_corners: false
 TimedOccupancyGridMap:
     MaxInterpolationTimeError: 0.06
     GuaranteedInterpolationTimeWindow: 1.0
-    EnableTrajectoriesTrimmer: false
-    TrajectoriesTrimmer:
+    EnableNodesTrimmer: false
+    NodesTrimmer:
         MaxTimeErrorForClosestLocalMapSearch: 0.1
         SkipLastN: 20
         MaxDistance: 3.0

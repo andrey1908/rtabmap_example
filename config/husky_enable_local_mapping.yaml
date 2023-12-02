@@ -3,7 +3,7 @@ accumulative_mapping: false
 temporary_mapping: true
 
 TimedOccupancyGridMap:
-    EnableTrajectoriesTrimmer: false
+    EnableNodesTrimmer: false
     OccupancyGridMap:
         CellSize: 0.02
         LocalMapBuilder:
