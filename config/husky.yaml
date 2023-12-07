@@ -47,9 +47,9 @@ TimedOccupancyGridMap:
             RayTracing:
                 # CellSize
                 MaxVisibleRange: 100.0
-                MaxTracingRange: 3.0
+                MaxTracingRange: 10.0
                 TraceIntoUnknownSpace: false
-            MaxRange2d: 3.0
+            MaxRange2d: 10.0
             SensorBlindRange2d: 0.0
         ObstacleDilation:
             # CellSize
