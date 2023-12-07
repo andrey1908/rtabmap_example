@@ -14,7 +14,7 @@ def build_parser():
     parser = argparse.ArgumentParser()
     parser.add_argument('--node-name', type=str, default="occupancy_grid_map")
 
-    parser.add_argument('--config-files', type=str, nargs='+', required=True)
+    parser.add_argument('--config-files', type=str, nargs='+')
     parser.add_argument('--load-map', type=str)
     parser.add_argument('--save-map', type=str)
     parser.add_argument('--save-tracking-results', type=str)
@@ -65,6 +65,9 @@ def run_rtabmap():
     if args.build:
         rtabmap.build_rtabmap()
         exit(0)
+
+    if not args.config_files:
+        raise RuntimeError("Specify config file(s).")
 
     time_str = time.strftime("%Y-%m-%d_%H.%M.%S")
     catkin_ws_folder = osp.abspath(osp.join(osp.dirname(__file__), "../../.."))
