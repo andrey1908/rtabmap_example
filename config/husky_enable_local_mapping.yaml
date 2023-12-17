@@ -2,19 +2,18 @@
 accumulative_mapping: false
 temporary_mapping: true
 
-TimedOccupancyGridMap:
+OccupancyGridMap:
+    CellSize: 0.02
     EnableNodesTrimmer: false
-    OccupancyGridMap:
-        CellSize: 0.02
-        LocalMapBuilder:
+    LocalMapBuilder:
+        # CellSize
+        MaxVisibleRange: 4.0
+        EnableRayTracing: true
+        RayTracing:
             # CellSize
             MaxVisibleRange: 4.0
-            EnableRayTracing: true
-            RayTracing:
-                # CellSize
-                MaxVisibleRange: 4.0
-                MaxTracingRange: 4.0
-                TraceIntoUnknownSpace: true
-            MaxRange2d: -1.0
-        EnableObjectTracking: false
+            MaxTracingRange: 4.0
+            TraceIntoUnknownSpace: true
+        MaxRange2d: -1.0
+    EnableObjectTracking: false
 
