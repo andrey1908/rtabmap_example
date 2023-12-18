@@ -17,8 +17,8 @@ OccupancyGridMap:
     PosesApproximation:
         MaxInterpolationTimeError: 0.06
         GuaranteedInterpolationTimeWindow: 1.0
-    EnableNodesTrimmer: false
-    NodesTrimmer:
+    EnablePosesTrimmer: false
+    PosesTrimmer:
         MaxTimeErrorForClosestLocalMapSearch: 0.1
         SkipLastN: 20
         MaxDistance: 3.0
