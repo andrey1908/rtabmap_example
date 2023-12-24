@@ -43,7 +43,7 @@ OccupancyGridMap:
             DilationSize: 20
         MinSemanticRange: 0.0
         MaxSemanticRange: -1.0
-        SensorBlindRange2d: 0.0
+        SensorBlindRange2d: -1.0
         EnableRayTracing: true
         RayTracing:
             # CellSize
