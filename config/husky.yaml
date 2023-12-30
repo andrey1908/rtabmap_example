@@ -14,6 +14,7 @@ draw_door_corners: false
 
 OccupancyGridMap:
     CellSize: 0.1
+    AllowToTransformMap: false
     PosesApproximation:
         MaxInterpolationTimeError: 0.06
         GuaranteedInterpolationTimeWindow: 1.0
