@@ -4,7 +4,7 @@ needs_localization: true
 
 # mapping mode
 accumulative_mapping: true
-temporary_mapping: false
+temporary_mapping: true
 
 # door tracking
 door_tracking_small_radius: 0.3
@@ -17,7 +17,6 @@ OccupancyGridMap:
     AllowToTransformMap: false
     PosesApproximation:
         MaxInterpolationTimeError: 0.06
-        GuaranteedInterpolationTimeWindow: 1.0
     EnablePosesTrimmer: false
     PosesTrimmer:
         MaxTimeErrorForClosestLocalMapSearch: 0.1
