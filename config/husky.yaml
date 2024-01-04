@@ -14,9 +14,8 @@ draw_door_corners: false
 
 OccupancyGridMap:
     CellSize: 0.1
+    MinNodesTimeDifference: 2.0
     AllowToTransformMap: false
-    PosesApproximation:
-        MaxInterpolationTimeError: 0.06
     EnablePosesTrimmer: false
     PosesTrimmer:
         MaxTimeErrorForClosestLocalMapSearch: 0.1
