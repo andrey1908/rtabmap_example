@@ -1,6 +1,6 @@
 # mapping mode
-accumulative_mapping: false
 temporary_mapping: true
+accumulative_mapping: false
 
 OccupancyGridMap:
     CellSize: 0.02

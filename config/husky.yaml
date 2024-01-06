@@ -3,8 +3,8 @@ updated_poses_frame: base_link
 needs_localization: true
 
 # mapping mode
-accumulative_mapping: true
 temporary_mapping: true
+accumulative_mapping: true
 
 # door tracking
 door_tracking_small_radius: 0.3
@@ -54,6 +54,12 @@ OccupancyGridMap:
     ObstacleDilation:
         # CellSize
         DilationSize: 0.0
+    TemporaryOccupancyGridBuilder:
+        # CellSize
+        TemporaryMissProb: 0.4
+        TemporaryHitProb: 0.7
+        TemporaryOccupancyProbThr: 0.5
+        MaxTemporaryLocalMaps: 1
     OccupancyGridBuilder:
         # CellSize
         MissProb: 0.4
@@ -63,11 +69,5 @@ OccupancyGridMap:
         OccupancyProbThr: 0.5
         TemporarilyOccupiedCellColorRgb: 9831741  # 9831741
         ShowTemporarilyOccupiedCells: true
-    TemporaryOccupancyGridBuilder:
-        # CellSize
-        TemporaryMissProb: 0.4
-        TemporaryHitProb: 0.7
-        TemporaryOccupancyProbThr: 0.5
-        MaxTemporaryLocalMaps: 1
     EnableObjectTracking: false
 
